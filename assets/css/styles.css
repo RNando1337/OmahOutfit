@@ -1,0 +1,287 @@
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+        @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .garisY {
+            width: 1px;
+            background: #e0e0e0;
+        }
+
+        .garisX {
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        #ex3 .fa-stack[data-count]:after {
+            position: absolute;
+            right: 0%;
+            top: 1%;
+            content: attr(data-count);
+            font-size: 55%;
+            padding: .45em;
+            border-radius: 50%;
+            border: 1px solid white;
+            line-height: .8em;
+            color: white;
+            text-align: center;
+            min-width: 1em;
+            font-weight: bold;
+        }
+
+        select {
+            border: 0;
+            margin: 2px;
+            border-right: 1px solid grey;
+            max-width: 5.5em;
+            outline: none;
+            color: grey;
+        }
+
+
+        .list {
+            font-size: .9em;
+            list-style-type: none;
+        }
+
+        .list li a {
+            color: #ffffff;
+            letter-spacing: 0.8px;
+        }
+
+        .list li a:hover {
+            color: #eee0e0;
+        }
+
+        .box {
+            box-align: border-box;
+            background-clip: padding-box;
+        }
+
+        .navColor {
+            background-color: #f24c61;
+            color : #fff;
+        }
+
+        .src{
+            border: 0px; 
+            outline:none;
+            flex: 1; 
+            font-size: 14px
+        }
+
+        .header-content{
+            background-color: #f24c61;
+            color : #fff;
+            height: 25px;
+            font-size: 14px;
+            padding: 2px;
+            display: flex;
+            
+        }
+
+        .box a {
+            color: #ffffff;
+            text-decoration:none;
+            padding:2px;
+        }
+
+         /* .footer__SVG {
+            background-color: transparent;
+            display: block;
+            position: relative;
+            bottom: 0px;
+            width: 100%;
+        }  */
+
+
+
+        .footer {
+            background-color: #f24c61;
+            color: #fff;
+            left:0px;
+            bottom:0px;
+            width: 100%;
+            height: max-content;
+            padding: 15px;
+        }
+
+        .footer-content-title {
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .footer-content-title img {
+            width: 120px;
+            height: 30px;
+            margin-left: -5px;
+        }
+
+        .footer-content-list {
+            color: #fff;
+            font-size: 12px;
+            padding-top: 5px;
+            font-family: "Open Sans", Arial, sans-serif;
+        }
+
+        .footer-content-list ul {
+            color: #fff;
+            list-style: none;
+            padding-left: 0px;
+        }
+
+        .footer-content-list ul li {
+            margin-top: 5px;
+        }
+
+        .footer-content-list ul li a{
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-copyright {
+            font-family: 'Oswald', sans-serif;
+            font-size: 12px;
+            line-height: 1.4;
+            text-align: center;
+            margin-top: 6px;
+        }
+
+        .iconSize-content {
+            font-size: 15px;
+            padding-right: 10px;
+        }
+        
+
+
+        .downloadContent {
+            position: absolute;
+            top: 100%;
+            z-index: 400;
+        }
+
+        .card.loginBox {
+            width: 450px;
+            height: max-content;
+            margin: 60px -150px 0 0;
+            padding: 22px 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+            font-family: OpenSans-Regular,Arial,Helvetica,sans-serif!important;
+        }
+
+        .card.registerBox{
+            width: 450px;
+            height: max-content;
+            margin: -20px -150px 0 0;
+            padding: 22px 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+            font-family: OpenSans-Regular,Arial,Helvetica,sans-serif!important;
+        }
+
+        .marginMin{
+            margin-top: -50px;
+        }
+
+        .logo {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .imgBox {
+            width:300px;
+            object-fit: contain;
+            position: relative;
+        }
+
+        a:-webkit-any-link {
+            cursor: pointer;
+        }
+
+        .loginText {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            color: #35405a;
+        }
+
+        .loginText-desc {
+            font-size: 14px;
+            text-align: left;
+            color: #58627a;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+        .loginText-desc.bot-text{
+            text-align: center;
+        }
+
+        .sumbitBox {
+            display: block;
+        }
+
+        .btn-custom {
+            background-color: #f24c61;
+            color: #fff;
+            width: 169.7px;
+            text-align: center;
+            border-radius: 24px;
+            border: none;
+            text-transform: uppercase;
+            padding: 12px 0;
+            font-size: 16px;
+            line-height: 0.8;
+            font-weight: 300;
+            cursor: pointer;
+        }
+
+        .bg-illustration {
+            position: absolute;
+            background: url(http://localhost/e-Commerce/OmahOutfit/images/design/558755.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            min-height: 615px;
+            margin: 5px 0 0 150px;
+        }
+
+        .forgotLink {
+            text-decoration: none;
+            color: #58627a;
+            font-size: 15px;
+        }
+
+        .forgotLink:hover {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .wrongMsg {
+            color: #f24c61;
+            font-size: 10px;
+        }
+
+        .hint {
+            color: #58627a;
+            font-size: 10px;
+        }
+
+        .message {
+            font-size:15px;
+        }
+
+        .drop {
+            color: #fff;
+        }
+
