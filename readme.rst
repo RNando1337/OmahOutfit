@@ -8,8 +8,10 @@ OmahOutfit merupakan marketplace yang bertujuan untuk memberikan peluang usaha k
 Release Information
 *******************
 
-+ OmahOutfit V.1
-+ Fitur Fix
+OmahOutfit V.1
+======
+Fitur Fix
+------
 
 1. **Member** => Login -> http://Localhost/member
 	1. Login Member.
