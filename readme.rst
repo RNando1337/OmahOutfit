@@ -8,17 +8,17 @@ OmahOutfit merupakan marketplace yang bertujuan untuk memberikan peluang usaha k
 Release Information
 *******************
 
-OmahOutfit V.1 
-fitur FIX
-(+) Member => Login -> http://localhost/member/
-- Login Member
-- Daftar Member
--	Email Verification
-- Menambahkan Produk
--	Edit Produk
-- Hapus Produk
+OmahOutfit V.1 <br>
+fitur FIX <br>
+(+) Member => Login -> http://localhost/member/<br>
+- Login Member<br>
+- Daftar Member<br>
+-	Email Verification<br>
+- Menambahkan Produk<br>
+-	Edit Produk<br>
+- Hapus Produk<br>
 
-(+) Admin => Login -> http://localhost/4dm1n
-- Login Admin
-- Tambah Kategori
-- Hapus Kategori
+(+) Admin => Login -> http://localhost/4dm1n<br>
+- Login Admin<br>
+- Tambah Kategori<br>
+- Hapus Kategori<br>
