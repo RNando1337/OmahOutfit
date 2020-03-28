@@ -9,7 +9,7 @@ Release Information
 *******************
 
 ###OmahOutfit V.1###
-..**Fitur Fix**
+####**Fitur Fix**####
 
 1. **Member** => Login -> http://Localhost/member
 	1. Login Member.
