@@ -12,13 +12,13 @@ Release Information
 **Fitur Fix**
 
 1. **Member** => Login -> http://Localhost/member
-	&nbsp;&nbsp; 1. Login Member.
-	&nbsp;&nbsp; 2. Daftar Member.
-	&nbsp;&nbsp; 3. Email Verification.
-	&nbsp;&nbsp; 4. Menambahkan Produk.
-	&nbsp;&nbsp; 5. Edit Produk.
-	&nbsp;&nbsp; 6. Hapus Produk.
-2 **Admin** => Login -> http://localhost/4dm1n
-	&nbsp;&nbsp; 1. Login Admin.
-	&nbsp;&nbsp; 2. Tambah Kategori.
-	&nbsp;&nbsp; 3. Hapus Kategori.
+	#### 1. Login Member.
+	#### 2. Daftar Member.
+	#### 3. Email Verification.
+	#### 4. Menambahkan Produk.
+	#### 5. Edit Produk.
+	#### 6. Hapus Produk.
+2. **Admin** => Login -> http://localhost/4dm1n
+	#### 1. Login Admin.
+	#### 2. Tambah Kategori.
+	#### 3. Hapus Kategori.
