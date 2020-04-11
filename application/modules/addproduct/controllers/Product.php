@@ -56,7 +56,7 @@ class Product extends MX_Controller {
 						   'productImage' => $config['file_name'],
 						   'productDesk' => $desk,
 						   'productStok' => $stok,
-						   'kategori' => $kat,	
+						   'category_id' => $kat,	
 						   'username' => $this->session->userdata('username')
          				];
           			$this->mdl_product->input($data); //memasukan data ke database
