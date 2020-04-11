@@ -63,7 +63,7 @@
 
                     <li class="nav-item pt-1 pr-3" id="ex3">
                         <span class="p1 fa-stack" data-count="0">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<?= base_url() ?>cart">
                                 <i class="fas fa-shopping-cart navColor"></i>
                             </a>
                     </li>
