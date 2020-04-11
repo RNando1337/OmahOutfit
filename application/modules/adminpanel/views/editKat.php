@@ -130,10 +130,6 @@ foreach($show_data->result_array() as $row) {
     <form action="<?= base_url() ?>4dm1n/edit?kat=<?= $row['category_id']; ?>" method="post" enctype="multipart/form-data">
       <table class="table w-50">
         <tbody>
-        <tr>
-            <th scope="row">Kategori Kode</th>
-            <td><input type="text" name="codeKat" value="<?= $row['category_id']; ?>" placholder="Masukan Kategori Barang" class="form-control" required></td>
-          </tr>
           <tr>
             <th scope="row">Kategori</th>
             <td><input type="text" name="kat" value="<?= $row['kategori']; ?>" placholder="Masukan Kategori Barang" class="form-control" required></td>

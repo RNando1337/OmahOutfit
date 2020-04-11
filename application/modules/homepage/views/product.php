@@ -105,92 +105,72 @@
     
     
     <!-- content -->
-    <div class="container-fluid p-3 pl-5 pr-5">
+    <div class="container">
+    <?php foreach($product->result_array() as $row) { 
+        $prod_id = $row['productID'];
+        $gambar = $row['productImage'];
+        $nama = $row['productName'];
+        $harga = $row['productPrice'];
+        $stok = $row['productStok'];
+        $desk = $row['productDesk'];
+        
+    }
+    ?>
+                    <!-- product header -->
+                <div class="produ">
+                <div class="row">
 
-    <!-- Slider -->
-    <!-- <div class="row">
-    <div class="col">
-    <div id="carouselExampleIndicators" class="carousel slide slider-size slidenya" data-ride="carousel">
-        <ol class="carousel-indicators" id="floatleft">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-            <div class="carousel-inner slider-border">
-                    <div class="carousel-item active">
-                        <img class="d-block slider-img" src="<?= base_url() ?>images/product/1.png" alt="First slide">
+                    <div class="col-sm-6">
+                        <img class="card-img-top" src="<?=base_url()?>images/product/<?= $gambar ?>" alt="Card image cap" class="fullwidth" />
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block slider-img" src="<?= base_url() ?>images/product/1.png" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block slider-img" src="<?= base_url() ?>images/product/1.png" alt="Third slide">
-                    </div>
-            </div>
-        <a class="carousel-control-prev bannerprevious-full" style="width:40px;" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next bannernext-full" style="width:40px;" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-        </a>
-    </div>
-    </div>
 
-    <div class="col">
-            <div class="row"><img class="banner1" src="<?= base_url() ?>images/product/1.png"></div>
-            <div class="row"><img class="banner1" src="<?= base_url() ?>images/product/1.png"></div>
-    </div>
+                    <div class="col-sm-6">
+                            <h3 class="prod-tittle"><?= $nama ?></h3>
+                                <div class="garisX mb-3"></div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                        <span>Harga</span>
+                                        </div>
+                                        <div class="col">
+                                        <span class="prod-price"><?= $this->mdl_product->rupiah($harga) ?></span>
+                                        </div>
+                                    </div>
 
-    </div> -->
-
-    <!-- Slider End -->
-
-    <!-- Product Terbaru -->
-    <div class="box-newPRODUCT">
-            <div class="box-header" style="border-radius: 5px 5xp 5px 5px;">
-                    <div class="box-header-tittle">
-                        Product Terbaru
-                    </div>
-            </div>
-
-            <div class="row">
-            <!-- Barang list -->
-            <?php foreach($product->result_array() as $row) { ?>
-                <div class="col-2 mb-3 mr-n2">
-                    <div class="w-100 h-75">
-                        <a href="<?=base_url()?>Products?prodID=<?= $row['productID']; ?>" class="link">
-                            <div class="card">
-                                <img class="card-img gambar" src="<?= base_url() ?>images/product/<?= $row['productImage']; ?>" alt="Card image cap">
-                                <div class="card-body">
-                                    <h6 class="card-title title-product"><?= $row['productName']; ?></h6>
-                                    <h6 class="card-subtitle subtitle-product">
-                                        <div class="harga"><?= $this->mdl_product->rupiah($row['productPrice']); ?></div>
-                                        <div class="sisa">Stok <?= $row['productStok']; ?></div>
-                                    <p class="card-text"></p>
+                                <div class="garisX mb-3 mt-1"></div>
+                                        <div class="row">
+                                        <div class="col-3">
+                                        <span>Jumlah</span>
+                                        </div>
+                                        <div class="col">
+                                        <span>Stok Tersisa <?= $stok ?></span>
+                                        <div class="clearfix"></div>
+                                        <div class="w-responsive p-0 mt-2" style="width:25%;">
+                                        <div class="stok">
+                                        <form action="<?= base_url() ?>Products?prodID=<?= $prod_id ?>" method="POST" style="display:flex;">
+                                        <input class="mr-1 ml-1 form-control" id="stok" type="text" style=" flex: 1; font-size: 15px; text-align:center;" name="qty" value="1">
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                        </div>
                     </div>
+                
+                        <button type="submit" class="produ-btn" name="Simpan"><i class="fas fa-cart-plus"></i>&nbsp Masukan Keranjang</button>
+                        </form>
+                
                 </div>
 
-            <?php } ?>  
-                
-                
-            
-
-            <!-- Barang list -->
-
-        </div>
-            
-    </div>
-
-    <!-- Product Terbaru End -->
-
-
-    </div>
                 </div>
+                </div>
+                    
+                <div class="desk-header">Deskripsi Produk</div>
+                <div class="desk">
+                    <span class="prod-desk"><?= $desk ?></span>
+                </div>
+                    <!-- end -->
+
+
+                    
+
+    </div>
     <!-- end Of Content -->
 
     <!-- Footer -->

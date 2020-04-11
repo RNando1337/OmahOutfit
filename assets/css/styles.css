@@ -1,14 +1,11 @@
         @import url('https://fonts.googleapis.com/css?family=Open+Sans');
         @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-        }
+        
+        
 
         .garisY {
-            width: 1px;
+            width: 0.5px;
             background: #e0e0e0;
         }
 
@@ -67,22 +64,58 @@
             color : #fff;
         }
 
-        .src{
-            border: 0px; 
-            outline:none;
-            flex: 1; 
-            font-size: 14px
-        }
 
         .header-content{
             background-color: #f24c61;
             color : #fff;
-            height: 25px;
+            height: 30px;
             font-size: 14px;
             padding: 2px;
             display: flex;
             
         }
+
+        .header-content a:hover {
+            text-decoration: none;
+            color:#fff;
+        }
+
+        .search-button {
+            border-radius: 0px 3px 3px 0px;
+            display: inline-block;
+            margin: 0px;
+            padding: 12px 19px 12px;
+            text-align: center;
+            background-color: #f24c61;
+            border: 1px solid #f24c61;
+        }
+
+        .search-button:hover {
+            cursor: pointer;
+        }
+
+        .search-input {
+            border-radius: 3px 0 0 3px;
+            width: 500px;
+            border-style: solid; 
+            border: medium none;
+            -webkit-border-radius: 3px 0 0 3px;
+            -moz-border-radius: 3px 0 0 3px;
+            flex: 1; 
+            font-size: 14px
+        }
+
+        .form-set{
+            height:40px;
+            box-shadow: 0 0 1px #fff;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .head-img {
+            margin-top: -10px;
+            margin-right: 20px;
+        }
+
 
         .box a {
             color: #ffffff;
@@ -101,6 +134,7 @@
 
 
         .footer {
+            position: relative;;
             background-color: #f24c61;
             color: #fff;
             left:0px;
@@ -284,4 +318,129 @@
         .drop {
             color: #fff;
         }
+
+
+        .color-f7f7f7{
+            color: #f7f7f7;
+        }
+
+        .box-header{
+            background: #f24c61;
+            height: 3rem;
+            padding: 12px;
+            margin: 0 0 5px 0 ;
+        }
+
+        .box-header-tittle{
+            font-size: 1rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* Banner */
+
+        .bannerprevious-full{
+            font-size: 20px;;
+            padding: 15px;
+            margin:auto;
+            width:5px;
+            height: 60px;
+            background-color: rgba(0,0,0,.26);
+            border-radius: 0 4px 4px 0;
+            color: black;
+            margin-left: 0px;
+        }
+
+        .bannernext-full{
+            font-size: 20px;;
+            padding: 15px;
+            margin:auto;
+            width:5px;
+            height: 60px;
+            background-color: rgba(0,0,0,.26);
+            border-radius: 0 4px 4px 0;
+            color: black;
+            margin-right: 0px;
+        }
+
+        .slider-img{
+            height:250px;
+            width:100%;
+        }
+
+        .slider-size{
+            width: 900px;
+        }
+
+        /* end */
+
+
+        /* Product Terbaru */
+
+        .slider-border{
+            border-radius: 10px;
+        }
+        .slider {
+            background-color: #58627a;
+            border-radius: 10px;
+        }
+
+        .box-newPRODUCT{
+            margin-top: 30px;
+        }
+
+        .box-content-image{
+            
+        }
+
+        .marginprevious-full{
+            padding: 15px;
+            margin:auto;
+            border-radius: 50%;
+            height: 40px;
+            background-color: #f24c61;
+            color: black;
+            margin-left: -20px;
+            
+        }
+
+        .previous-settings{
+            color: white;
+        }
+
+        .marginnext-full{
+            padding: 15px;
+            margin:auto;
+            border-radius: 50%;
+            height: 40px;
+            background-color: #f24c61;
+            margin-right: -20px
+        }
+
+        .next-settings{
+            color: white;
+        }
+
+        .title-porduct{
+
+        }
+
+        /* END */
+
+
+        /* cart */
+
+
+        /* end cart */
+
+
+        /* bootstrap */
+        
+        /* end */
+
+
+        .link:hover {
+            text-decoration: none;
+        }
+
 

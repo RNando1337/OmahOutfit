@@ -7,7 +7,7 @@ class mdl_product extends CI_Model{
 
 
     public function getKategori(){
-        return $this->db->select('kategori')->from($this->_kategori)->order_by('kategori', 'DESC')->get();
+        return $this->db->select('*')->from($this->_kategori)->order_by('kategori', 'ASC')->get();
     }
 
     public function countID(){

@@ -25,14 +25,18 @@ class Dashboard extends MX_Controller
     }
 
     function tbhKategori(){
-        $this->form_validation->set_rules('codeKat', 'Kategori Kode','required');
         $this->form_validation->set_rules('kat', 'Kategori','required');
         
-            $kode = $this->input->post('codeKat');
+            $kode = $this->mdl_login->countKat()->result_array();
+            foreach($kode as $row){
+                $count = $row['id'];
+            }
+            $total = $count+1;
+            $IDmake = "KT000".$total;
             $kat  =	$this->input->post('kat');
             
             $data = [
-                'category_id' => $kode,
+                'category_id' => $IDmake,
                 'kategori' => $kat
             ];
 
@@ -47,7 +51,6 @@ class Dashboard extends MX_Controller
             $data['show_data'] = $this->mdl_login->getByID($id);
             $this->load->view('editKat', $data);
             if($this->input->post('Simpan')){
-                $kode = $this->input->post('codeKat');
                 $nama = $this->input->post('kat');
 
                 $this->db->query('UPDATE category SET category_id="'.$kode.'", kategori="'.$nama.'" WHERE category_id="'.$id.'"');

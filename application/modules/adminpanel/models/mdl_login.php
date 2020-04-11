@@ -30,4 +30,8 @@ class mdl_login extends CI_Model{
        }
     
 
+      function countKat(){
+        return $this->db->select('count(*) as id')->from('category')->get();
+      }
+
 }

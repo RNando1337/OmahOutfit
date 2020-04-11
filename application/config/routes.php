@@ -59,6 +59,7 @@ $route['member'] = 'member/member';
 $route['logout'] = 'homepage/logout';
 $route['product'] = 'myproduct/myproduct';
 $route['product/add'] = 'addproduct/product';
+$route['Products'] = 'homepage/Products';
 
 // $route['myaccount/(:any)'] = 'myaccount/$1';
 

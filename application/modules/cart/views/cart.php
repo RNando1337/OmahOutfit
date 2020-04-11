@@ -7,6 +7,70 @@
     <link href="<?php echo base_url("assets/dist/css/bootstrap.min.css") ?>" rel="stylesheet" />
     <link href="<?php echo base_url("assets/css/custom.css") ?>" rel="stylesheet" />
     <script type="module" src="<?php echo base_url("assets/js/src/carousel.js") ?>"></script>
+     <!-- Javascript -->
+     <script type="text/javascript" src="<?php echo base_url("assets/dist/js/jquery.min.js") ?>"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var totalakhir;
+        var nilaibaru;
+        var angka,split,sisa,rupiah,ribuan;
+        var harga = $('#harga').text();
+        var maxvalue = $("#maxvalue").val();
+        var totalAkhir = $('#TotalAkhir').text();
+         $('#btn-min').click(function(){
+            var getqty = $('#qty').val();
+            if(getqty == 0) {
+                nilaibaru=0;
+                totalakhir = parseInt(nilaibaru*convertToAngka(harga));
+            }else{
+                nilaibaru = parseInt(getqty)-1;
+                totalakhir = parseInt(nilaibaru*convertToAngka(harga));
+            }
+            $('#qty').val(nilaibaru);
+            $('#total').text(rupiahformat(totalakhir, 'Rp. '));
+            $('#TotalAkhir').text(rupiahformat(totalakhir, 'Rp. '));
+
+         });
+         $('#btn-plus').click(function(){
+            var getqty = $('#qty').val();
+            if(getqty==maxvalue){
+                nilaibaru = maxvalue;
+                totalakhir = parseInt(nilaibaru*convertToAngka(harga));
+            }else{
+                nilaibaru = parseInt(getqty)+1;
+                totalakhir = parseInt(nilaibaru*convertToAngka(harga));
+            }
+            $('#qty').val(nilaibaru);
+            $('#total').text(rupiahformat(totalakhir, 'Rp. '));
+            $('#TotalAkhir').text(rupiahformat(totalakhir, 'Rp. '));
+            
+         });
+
+         function rupiahformat(value,matauang)
+         {
+             angka          = value.toString().replace(/[^,\d]/g, '');
+             split   		= angka.split('.'),
+			 sisa     		= split[0].length % 3,
+			 rupiah     	= split[0].substr(0, sisa),
+			 ribuan     	= split[0].substr(sisa).match(/\d{3}/gi);
+
+             if(ribuan){
+                separator = sisa ? '.' : '';
+				rupiah += separator + ribuan.join('.');
+             }
+
+             rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+			 return matauang == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+         }
+
+         function convertToAngka(rupiah)
+         {
+	        return parseInt(rupiah.replace(/,.*|[^0-9]/g, ''), 10);
+         }
+    });
+     </script>
 </head>
 
 <body>
@@ -32,7 +96,7 @@
 
     <nav class="navbar navbar-expand-lg pr-4 navColor">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="head-img" src="<?= base_url() ?>images/LogoNew.png" width="180px" height="45px" /></a>
+            <a class="navbar-brand" href="<?= base_url() ?>"><img class="head-img" src="<?= base_url() ?>images/LogoNew.png" width="180px" height="45px" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent-555" aria-controls="navbarSupportedContent-555"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -105,92 +169,80 @@
     
     
     <!-- content -->
-    <div class="container-fluid p-3 pl-5 pr-5">
+    <div class="container-fluid p-5 mt-3 mb-5">
+    <div class="row">
+         <div class="col">
+         <h4>Keranjang Saya</h4>
+         </div>
+         <div class="col">
+         <button class="btn-lanjutkan" style="color:white; letter-spacing:1px;" onClick="location.href='<?= base_url() ?>'">Lanjutkan Belanja ></button>
+         </div>
+         </div>
+         <div class="garisX"></div>
 
-    <!-- Slider -->
-    <!-- <div class="row">
-    <div class="col">
-    <div id="carouselExampleIndicators" class="carousel slide slider-size slidenya" data-ride="carousel">
-        <ol class="carousel-indicators" id="floatleft">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-            <div class="carousel-inner slider-border">
-                    <div class="carousel-item active">
-                        <img class="d-block slider-img" src="<?= base_url() ?>images/product/1.png" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block slider-img" src="<?= base_url() ?>images/product/1.png" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block slider-img" src="<?= base_url() ?>images/product/1.png" alt="Third slide">
-                    </div>
-            </div>
-        <a class="carousel-control-prev bannerprevious-full" style="width:40px;" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next bannernext-full" style="width:40px;" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-        </a>
-    </div>
-    </div>
+<!-- loop barang -->
+<?php foreach($cart as $row) { ?>
+            <div class="row mt-3">
 
-    <div class="col">
-            <div class="row"><img class="banner1" src="<?= base_url() ?>images/product/1.png"></div>
-            <div class="row"><img class="banner1" src="<?= base_url() ?>images/product/1.png"></div>
-    </div>
+                <div class="col-sm-2">
+                <img class="card-img-top" src="<?= base_url() ?>images/product/<?= $row['productImage'] ?>" alt="Card image cap" />
+                </div>
 
-    </div> -->
+                <div class="col-sm-4">
+                <span><?= $row['productName'] ?></span>
+                </div>
 
-    <!-- Slider End -->
+                <div class="col-sm-2 mt-1">
+                <span id="harga"><?= $this->mdl_cart->rupiah($row['productPrice']) ?></span>
+                </div>
 
-    <!-- Product Terbaru -->
-    <div class="box-newPRODUCT">
-            <div class="box-header" style="border-radius: 5px 5xp 5px 5px;">
-                    <div class="box-header-tittle">
-                        Product Terbaru
-                    </div>
-            </div>
-
-            <div class="row">
-            <!-- Barang list -->
-            <?php foreach($product->result_array() as $row) { ?>
-                <div class="col-2 mb-3 mr-n2">
-                    <div class="w-100 h-75">
-                        <a href="<?=base_url()?>Products?prodID=<?= $row['productID']; ?>" class="link">
-                            <div class="card">
-                                <img class="card-img gambar" src="<?= base_url() ?>images/product/<?= $row['productImage']; ?>" alt="Card image cap">
-                                <div class="card-body">
-                                    <h6 class="card-title title-product"><?= $row['productName']; ?></h6>
-                                    <h6 class="card-subtitle subtitle-product">
-                                        <div class="harga"><?= $this->mdl_product->rupiah($row['productPrice']); ?></div>
-                                        <div class="sisa">Stok <?= $row['productStok']; ?></div>
-                                    <p class="card-text"></p>
+                <div class="col-sm-2">
+                <div class="w-responsive p-0">
+                            <form style="display: flex;">
+                            <input type="hidden" id="maxvalue" value="<?= $row['productStok'] ?>">
+                                        <button type="button" class="btn-minplus" id="btn-min"><i class="fas fa-minus"></i></button>
+                                        <input class="qty" id="qty" type="text" value="<?= $row['totalBeli'] ?>">
+                                        <button type="button" class="btn-minplus" id="btn-plus"><i class="fas fa-plus"></i></button>
+                            </form>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
                 </div>
 
-            <?php } ?>  
-                
-                
-            
-
-            <!-- Barang list -->
-
-        </div>
-            
-    </div>
-
-    <!-- Product Terbaru End -->
-
-
-    </div>
+                <div class="col-sm-2">
+                <h6 class="font-weight-bold float-right" id="total" style=""><?= $this->mdl_cart->rupiah($row['totalBeli']*$row['productPrice']) ?></h6>
                 </div>
+
+            </div>
+
+<?php } ?>
+
+            <!-- loop -->
+
+            <div class="garisX mt-3"></div>
+
+            <div class="row mt-3">
+            <div class="col-8 ">
+            </div>
+
+            <div class="col ">
+
+            <div class="row mt-2">
+                <div class="col-6 ">
+                Total Akhir
+                </div>
+                <div class="col ">
+                <h6 class="font-weight-bold float-right" id="TotalAkhir"> <?= $this->mdl_cart->rupiah($row['totalBeli']*$row['productPrice']) ?> </h6>
+                </div>
+            </div>
+
+            <div class="row mt-3 float-right">
+            <button class="btn-checkout">Checkout ></button>
+            </div>
+
+            </div>
+            </div>
+
+         </div>
+    </div>
     <!-- end Of Content -->
 
     <!-- Footer -->
@@ -287,8 +339,6 @@
 
     <!-- end Of Footer -->
 
-     <!-- Javascript -->
-     <script type="text/javascript" src="<?php echo base_url("assets/dist/js/jquery.min.js") ?>"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="<?php echo base_url("assets/dist/js/popper.min.js") ?>"></script>
     <!-- Bootstrap core JavaScript -->

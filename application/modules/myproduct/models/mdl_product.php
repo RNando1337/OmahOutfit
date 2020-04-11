@@ -3,7 +3,7 @@
 class mdl_product extends CI_Model{	
 
    function getAllproduk(){
-       return $this->db->select('*')->from('product')->where('username', $this->session->userdata('username'))->get();
+    return $this->db->select('*')->from('product')->where('username', $this->session->userdata('username'))->get();
    }
 
    function getKategori(){

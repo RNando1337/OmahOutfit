@@ -9,10 +9,12 @@ parent::__construct();
 }
 
 function index(){
+    $rules['login'] = 'Log In';
+    print_r($this->session->userdata('username'));
     if($this->session->userdata('username')){
         redirect(base_url());
     }else{
-    $this->load->view('m_login');
+    $this->load->view('m_login', $rules);
     }
 }
 
@@ -40,18 +42,16 @@ function auth_login(){
                 $this->session->set_userdata('username', $row['username']);
                 echo "<script type='text/javascript'>alert('Login Gagal');</script>";
                 redirect(base_url());
-        }else{
-                echo "<script type='text/javascript'>alert('Login Gagal');</script>";
-                redirect(base_url('member'));
         }
 
-    if($this->input->post('Daftar')){
-        redirect(base_url('member/register'));
-    }
+        if($this->input->post('Daftar')){
+            redirect(base_url('member/register'));
+        }
+
 }
 
 function register(){
-    $rules['member'] = 'member';
+    $rules['register'] = 'Register';
     $this->form_validation->set_rules('name', 'Nama Lengkap','required');
     $this->form_validation->set_rules('user', 'Username','required|min_length[6]|max_length[25]');
     $this->form_validation->set_rules('email','Email','required|valid_email');
@@ -96,9 +96,6 @@ function register(){
             $this->session->set_flashdata('message', '<div class="alert alert-success message" role="alert">
             Silahkan cek email untuk memverifikasi akun anda.
             </div>');
-            redirect(base_url('member'));
-
-        
     }
 }
 
@@ -130,8 +127,40 @@ function verify(){
     redirect('member');
 }
 
- function forgot_pass(){
-     
+ function forgotpass(){
+    $rules['forgotpass'] = 'Forgot Password';
+    $this->form_validation->set_rules('user','Email','trim|valid_email|required');
+
+    if($this->input->post('Back')){
+        redirect(base_url('member'));
+    }
+
+    if($this->form_validation->run() === FALSE){
+        $this->load->view('m_updatepassword', $rules);
+    } else{
+        $email = $this->input->post('user');
+        $check = $this->db->get_where('member', ['email' => $email])->row_array();
+        if($check){
+            $set = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; //code
+            $token = substr(str_shuffle($set), 0, 25); //shuffle code untuk tokennya
+
+            $user_token = array(
+                'email' => $email,
+                'token' => $token
+                );
+
+                $this->db->insert('user_token', $user_token);
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Email untuk mengganti password sudah terkirim. Silahkan cek email.
+                </div>'); 
+
+        }else{
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Email belum terdaftar! atau email salah.
+            </div>');  
+        }
+    }  
+
  }
 
 }

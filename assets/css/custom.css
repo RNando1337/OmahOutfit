@@ -1,0 +1,195 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(0,0,0,0.035);
+}
+
+.card{
+    margin-top:10px;
+    background: #fff;
+    border-radius: 0px;
+    border: 0px;
+    font-family: "Open Sans", sans-serif;;
+    box-shadow: 0px 0px 3px 0.5px rgba(0,0,0,0.15);
+}
+
+.title-product {
+    margin-top:-12px;
+    margin-left: -15px;
+    color: #000;
+}
+
+.subtitle-product{
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: -5px;
+}
+
+.harga {
+    color:#f24c61;
+    font-size: 13px;
+    display: inline;
+}
+
+.sisa {
+    color: rgba(0,0,0,0.5);
+    float: right;
+    font-size: 10px;
+}
+
+.gambar {
+    border: 0;
+    border-radius: 0;
+}
+
+.slidenya {
+    display: flex;
+    position: sticky;
+}
+
+.banner1 {
+    width: 97%;
+    height: 120px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.banner2 {
+    width: 97%;
+    height: 120px;
+    border-radius: 5px;
+}
+
+.produ {
+    background: #fff;
+    align-content: center;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 10px 15px;
+}
+
+.produ-btn {
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    background: #f24c61;
+    font-family: 'Open sans', sans-serif;
+    padding: 5px;
+    text-decoration: none;
+    text-align: center;
+    margin-right: 20px;
+    position: relative;
+    bottom: 0;
+    float: right;
+    align-content: flex-end;
+}
+
+.produ-btn:hover{
+    cursor: pointer;
+}
+
+.prod-price{
+    color: #f24c61;
+    font-family: 'Open sans', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.prod-title{
+    font-family: 'Open sans', sans-serif;
+    font-weight: bold;
+}
+
+.desk-header{
+    background: #f24c61;
+    color: #fff;
+    height: 3rem;
+    padding: 5px 15px;
+    font-family: 'Open sans', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    box-shadow:0px 0px 1px 1px rgba(0,0,0,0.35);
+}
+
+.desk{
+    background: #fff;
+    align-content: center;
+    justify-content: center;
+    padding: 10px 15px; 
+    margin-bottom: 30px;
+    box-shadow:0px 0px 1px 0px rgba(0,0,0,0.35);
+}
+
+/* Keranjang */
+
+.btn-lanjutkan {
+    background: #f24c61;
+    color: #fff;
+    border: none;
+    width: 200px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    float: right;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: 'Open sans', sans-serif;
+    text-decoration: none;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-lanjutkan:hover {
+    cursor: pointer;
+}
+
+.btn-checkout {
+    background: #f24c61;
+    color: #fff;
+    border: none;
+    width: 150px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    float: right;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: 'Open sans', sans-serif;
+    text-decoration: none;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-checkout:hover{
+    cursor: pointer;
+}
+
+.btn-minplus {
+    background: #f24c61;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    float: right;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: 'Open sans', sans-serif;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-minplus:hover {
+ cursor: pointer;
+}
+
+.qty {
+    border: 0px; 
+    outline:none; 
+    flex: 1; 
+    font-size: 15px; 
+    text-align:center;
+    height:35px;
+    width: 30px;
+}
+
+/* end */

@@ -2,11 +2,11 @@
 
 <head>
     <title>OmahOutfit Indonesia | Jual Beli Pakaian Kekinian</title>
-    <link href="<?php echo base_url("assets/dist/css/bootstrap.min.css") ?>" rel="stylesheet" />
     <link href="<?php echo base_url("assets/css/styles.css") ?>" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <script src="<?php echo base_url("assets/dist/js/bootstrap.min.js") ?>"></script>
-    <script src="<?php echo base_url("assets/js/src/carousel.js") ?>"></script>
+    <link href="<?php echo base_url("assets/dist/css/bootstrap.min.css") ?>" rel="stylesheet" />
+    <link href="<?php echo base_url("assets/css/custom.css") ?>" rel="stylesheet" />
+    <script type="module" src="<?php echo base_url("assets/js/src/carousel.js") ?>"></script>
      <!-- Javascript -->
      <script type="text/javascript" src="<?php echo base_url("assets/dist/js/jquery.min.js") ?>"></script>
     <!-- Bootstrap tooltips -->
@@ -46,18 +46,15 @@
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="form-control p-1 ml-4" style="width:40%">
-
-                <form style="display: flex;" method="post">
+            <form class="form-set ml-3 mt-1" style="display: flex;" method="post">
                     <!-- Kat -->
-                    <input class="w-responsive pl-1 src" type="text" name="barang" maxlength="50"
+                    <input class="search-input pl-2" type="text" name="barang" maxlength="50"
                         placeholder="Cari di OmahOutfit">
-                    <button type="submit" class="input-group-text navColor float-right" name="cari"
+                    <button type="submit" class="search-button navColor float-right" name="cari"
                         id="basic-addon11"><i class="fas fa-search"></i></button>
                 </form>
 
-            </div>
+            
 
             <!-- Default form subscription -->
 
@@ -129,7 +126,7 @@
             <th scope="row">Kategori Barang</th>
             <td><select class="form-control" name="kat">
                     <?php foreach($semua_kategori->result_array() as $row){ ?>
-                    <option><?php echo $row['kategori'];?></option>
+                    <option value="<?= $row['category_id'] ?>"><?php echo $row['kategori'];?></option>
                     <?php }?> 
             </select></td>
           </tr>

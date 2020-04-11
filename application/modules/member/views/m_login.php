@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Log In</title>
+    <title><?= $login ?></title>
     <link href="<?php echo base_url() ?>assets/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?php echo base_url() ?>assets/css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -44,10 +44,10 @@
                             </div>
                             <div class="submitBox">
                                 <input type="submit" class="btn-custom" value="Login" name="Login" />
-                                <input type="submit" class="btn-custom" value="Daftar" name="Daftar" onclick="location.href='<?php echo base_url() ?>member/register'"/>
+                                <input type="submit" class="btn-custom" value="Daftar" name="Daftar"/>
                             </div>
                         </form>
-                        <a href="#" class="forgotLink">Lupa Password?</a>
+                        <a href="<?= base_url() ?>member/forgotpass" class="forgotLink">Lupa Password?</a>
                     </div>
                 </div>
             </div>

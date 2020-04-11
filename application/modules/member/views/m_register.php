@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Daftar</title>
+    <title><?= $register ?></title>
     <link href="<?php echo base_url() ?>assets/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?php echo base_url() ?>assets/css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">

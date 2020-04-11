@@ -53,4 +53,10 @@ class mdl_user extends CI_Model{
                             die;
                         }
     }
+
+
+    function sendPass($token, $type, $email){
+        
+    }
+
 }
