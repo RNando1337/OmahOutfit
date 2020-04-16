@@ -53,8 +53,8 @@ function auth_login(){
 function register(){
     $rules['register'] = 'Register';
     $this->form_validation->set_rules('name', 'Nama Lengkap','required');
-    $this->form_validation->set_rules('user', 'Username','required|min_length[6]|max_length[25]');
-    $this->form_validation->set_rules('email','Email','required|valid_email');
+    $this->form_validation->set_rules('user', 'Username', 'required|min_length[6]|max_length[25]|is_unique[member.username]', array('is_unique' => '{field} sudah digunakan'));
+    $this->form_validation->set_rules('email','Email','required|valid_email|is_unique[member.email]', array('is_unique' => '{field} sudah digunakan'));
     $this->form_validation->set_rules('pass','Password','required');
     $this->form_validation->set_rules('telp', 'No. Handphone', 'required|regex_match[/^[0-9]/]|max_length[12]');
 
@@ -69,10 +69,22 @@ function register(){
         redirect(base_url('member'));
     }
 
+    $cekUser = $this->mdl_user->cekPendaftar($user,$email)->result_array();
+
+    foreach($cekUser as $row){
+        $userCek = $row['username'];
+        $emailCek = $row['email'];
+    }
+
     if($this->form_validation->run() === FALSE){
         $this->load->view('m_register', $rules);
     }else{
-        $data = array(
+        if($userCek == $user || $emailCek == $email){
+            $this->session->set_flashdata('message', '<div class="alert alert-primary message" role="alert">
+            Akun sudah pernah didaftarkan silahkan login.
+            </div>');
+        }else{
+            $data = array(
             'name' => $nama,
             'username' => $user,
             'email' => $email,
@@ -90,12 +102,15 @@ function register(){
             );
             // end
 
-            $this->mdl_user->sendEmail($token, 'verifikasi',$email,$password);
+            $this->mdl_user->sendEmail($token,$email,$password);
             $this->mdl_user->daftar('member', $data);
             $this->db->insert('user_token', $user_token);
             $this->session->set_flashdata('message', '<div class="alert alert-success message" role="alert">
             Silahkan cek email untuk memverifikasi akun anda.
             </div>');
+
+            redirect(base_url('member'));
+        }
     }
 }
 
@@ -149,10 +164,13 @@ function verify(){
                 'token' => $token
                 );
 
+                $this->mdl_user->sendForgot($token,$email);
                 $this->db->insert('user_token', $user_token);
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Email untuk mengganti password sudah terkirim. Silahkan cek email.
                 </div>'); 
+
+                redirect(base_url('member'));
 
         }else{
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
@@ -160,6 +178,60 @@ function verify(){
             </div>');  
         }
     }  
+ }
+
+ function resetpassword(){
+    $email = $this->input->get('email');
+    $token = $this->input->get('token');
+
+    $user = $this->db->get_where('member', ['email' => $email])->row_array();
+    if($user){
+        $usertoken = $this->db->get_where('user_token', ['token' => $token])->row_array();
+        if($usertoken){
+            $this->session->set_userdata('resetpass', $email);
+            $this->reset();
+        }else{
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Merubah password gagal! token salah.
+          </div>');
+          redirect('member');
+        }
+
+    }else{
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        Gagal merubah password
+      </div>');
+      redirect('member');
+    }
+ }
+
+ public function reset(){
+     $rules['reset'] = "Reset Password";
+     $this->form_validation->set_rules('password1', 'Password','required|min_length[6]|max_length[25]|matches[password2]|trim');
+     $this->form_validation->set_rules('password2', 'Repeat Password','required|min_length[6]|max_length[25]|matches[password1]|trim');
+
+
+     if(!$this->session->userdata('resetpass')){
+        redirect('member');
+     }
+
+     if($this->form_validation->run() === FALSE){
+     $this->load->view('m_reset', $rules);
+     }else{
+        $password = md5($this->input->post('password1'));
+        $email = $this->session->userdata('resetpass');
+
+        $this->db->query("UPDATE member SET password = '$password' WHERE email = '$email'");
+        $this->db->delete('user_token', ['email' => $email]);
+        $this->session->unset_userdata('resetpass');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Password telah diubah. Silahkan login!
+            </div>');  
+        
+        redirect(base_url('member'));
+     }
+
 
  }
 

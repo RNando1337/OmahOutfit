@@ -7,6 +7,45 @@
     <link href="<?php echo base_url("assets/dist/css/bootstrap.min.css") ?>" rel="stylesheet" />
     <link href="<?php echo base_url("assets/css/custom.css") ?>" rel="stylesheet" />
     <script type="module" src="<?php echo base_url("assets/js/src/carousel.js") ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/dist/js/jquery.min.js") ?>"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+     <script type="text/javascript">
+     $(document).ready(function(){
+        var value;
+        var maxvalue = $("#stok").val();
+        
+
+        $("#btn-min").click(function(){
+            var getqty = $("#qty").val();
+            if(getqty == 0){
+                value = 0;
+            }else{
+                value = parseInt(getqty)-1;
+            }
+            $("#qty").val(value);
+        });
+
+        $("#btn-plus").click(function(){
+            var getqty = $("#qty").val();
+            if(getqty == maxvalue){
+                value = maxvalue;
+            }else{
+                value = parseInt(getqty)+1;
+            }
+            $("#qty").val(value);
+        });
+
+        $("#qty").change(function(){
+            var qty = $("#qty").val();
+            if($(this).val() >= maxvalue){
+                alert("test")
+                $(this).val(maxvalue);
+            }
+        });
+
+     });
+     
+     </script>
 </head>
 
 <body>
@@ -142,12 +181,16 @@
                                         <span>Jumlah</span>
                                         </div>
                                         <div class="col">
-                                        <span>Stok Tersisa <?= $stok ?></span>
+                                        <span>Stok Tersisa</span><span> <?= $stok ?></span>
                                         <div class="clearfix"></div>
                                         <div class="w-responsive p-0 mt-2" style="width:25%;">
                                         <div class="stok">
+                                        <input type="hidden" id="stok" value="<?= $stok ?>">
                                         <form action="<?= base_url() ?>Products?prodID=<?= $prod_id ?>" method="POST" style="display:flex;">
-                                        <input class="mr-1 ml-1 form-control" id="stok" type="text" style=" flex: 1; font-size: 15px; text-align:center;" name="qty" value="1">
+                                        <button type="button" class="btn-minplus" id="btn-min"><i class="fas fa-minus"></i></button>
+                                        <input class="qty" id="qty" type="text"  value="1">
+                                        <button type="button" class="btn-minplus" id="btn-plus"><i class="fas fa-plus"></i></button>
+                            </form>
                                     </div>
                                 </div>
                         </div>
@@ -275,6 +318,7 @@
     <script type="text/javascript" src="<?php echo base_url("assets/dist/js/bootstrap.min.js") ?>"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?php echo base_url("assets/dist/js/mdb.min.js") ?>"></script>
+    
 
 </body>
 

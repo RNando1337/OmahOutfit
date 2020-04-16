@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title><?= $forgotpass ?></title>
+    <title><?= $reset ?></title>
     <link href="<?php echo base_url() ?>assets/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?php echo base_url() ?>assets/css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -27,18 +27,22 @@
 
             <div class="col-4">
                 <div class="card loginBox float-right">
-                    <div class="loginText">Forgot Password</div>
-                    <div class="loginText-desc">Untuk mengatur ulang kata sandi Anda, kirimkan alamat email Anda di bawah ini</div>
+                    <div class="loginText">Reset Password</div>
+                    <div class="loginText-desc">Silahkan untuk mengubah passwordmu disini.</div>
                     <div class="card-body">
-                        <form action="<?php echo base_url() ?>member/forgotpass" method="post">
+                        <form action="<?php echo base_url() ?>member/reset" method="post">
                             <div class="form-group ">
-                                <label>E-Mail</label>
-                                <input type="text" class="form-control w-100" placeholder="E-Mail" name="user"
-                                    />
+                                <label>Password</label>
+                                <input type="password" class="form-control w-100" placeholder="Password" name="password1"/>
+                                <?= form_error('password1', '<span class="wrongMsg"> *', '</span>') ?>
+                            </div>
+                            <div class="form-group ">
+                                <label>Ulangi Password</label>
+                                <input type="password" class="form-control w-100" placeholder="Masukan Password yang sama" name="password2"/>
+                                <?= form_error('password2', '<span class="wrongMsg"> *', '</span>') ?>
                             </div>
                             <div class="submitBox">
-                                <input type="submit" class="btn-custom" value="Reset Password" name="Reset" />
-                                <input type="submit" class="btn-custom" value="Back" name="Back"/>
+                                <input type="submit" class="btn-custom" value="Ubah Password" name="ubah" />
                             </div>
                         </form>
                     </div>

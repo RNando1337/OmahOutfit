@@ -192,4 +192,8 @@ body {
     width: 30px;
 }
 
+.numberinput {
+    -webkit-appearance: none;
+}
+
 /* end */

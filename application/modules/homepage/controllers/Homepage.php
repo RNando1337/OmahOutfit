@@ -13,6 +13,7 @@ class Homepage extends MX_Controller {
         
 	public function index()
 	{
+		$data['products'] = $this->mdl_product->getAllProductUser();
 		$data['product'] = $this->mdl_product->getAllProduct();
 		if($this->session->userdata('username')){
 			$this->load->view('homepage', $data);

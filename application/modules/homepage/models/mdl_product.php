@@ -6,6 +6,14 @@ class mdl_product extends CI_Model{
     return $this->db->select('*')->from('product')->where('productID', $product_id)->get();
   }
 
+  //function untun user yang sudah login
+  function getAllProductUser(){
+    $user = $this->session->userdata('username');
+    $where = "username != '".$user."'"; 
+    return $this->db->select('*')->from('product')->where($where)->order_by('productID DESC','rand() ASC')->limit(18)->get();
+  }
+
+  //function untun user yang belom login
   function getAllProduct(){
     return $this->db->select('*')->from('product')->order_by('productID DESC','rand() ASC')->limit(18)->get();
   }

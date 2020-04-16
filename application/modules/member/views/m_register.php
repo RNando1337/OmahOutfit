@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group ">
                                 <label>No. Handphone</label>
-                                <input type="tel" class="form-control w-100" value="<?php echo set_value('telp') ?>" placeholder="No. Handphone" name="telp"/>
+                                <input type="tel" class="form-control w-100" value="<?php echo set_value('telp') ?>" maxlength="13" placeholder="No. Handphone" name="telp"/>
                                 <span class="hint">cth: 081225075776</span>
                             </div>
                             <div class="form-group ">

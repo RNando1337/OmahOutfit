@@ -157,8 +157,12 @@
 
             <div class="row">
             <!-- Barang list -->
-            <?php foreach($product->result_array() as $row) { ?>
-                <div class="col-2 mb-3 mr-n2">
+            <?php 
+            
+            if($this->session->userdata('username')){
+                foreach($products->result_array() as $row) { ?>
+
+                    <div class="col-2 mb-3 mr-n2">
                     <div class="w-100 h-75">
                         <a href="<?=base_url()?>Products?prodID=<?= $row['productID']; ?>" class="link">
                             <div class="card">
@@ -175,7 +179,33 @@
                     </div>
                 </div>
 
-            <?php } ?>  
+            <?php } 
+        
+                  } else{
+                    foreach($product->result_array() as $row) { ?>
+
+<div class="col-2 mb-3 mr-n2">
+                    <div class="w-100 h-75">
+                        <a href="<?=base_url()?>Products?prodID=<?= $row['productID']; ?>" class="link">
+                            <div class="card">
+                                <img class="card-img gambar" src="<?= base_url() ?>images/product/<?= $row['productImage']; ?>" alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-title title-product"><?= $row['productName']; ?></h6>
+                                    <h6 class="card-subtitle subtitle-product">
+                                        <div class="harga"><?= $this->mdl_product->rupiah($row['productPrice']); ?></div>
+                                        <div class="sisa">Stok <?= $row['productStok']; ?></div>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+               <?php } } ?>  
+                
+           
+                
                 
                 
             
