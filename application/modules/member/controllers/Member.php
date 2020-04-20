@@ -40,8 +40,12 @@ function auth_login(){
                          $username = $row['username'];
                     }
                 $this->session->set_userdata('username', $row['username']);
-                echo "<script type='text/javascript'>alert('Login Gagal');</script>";
                 redirect(base_url());
+        }else{
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Login Gagal
+            </div>');  
+            redirect(base_url('member'), 'refresh');
         }
 
         if($this->input->post('Daftar')){
