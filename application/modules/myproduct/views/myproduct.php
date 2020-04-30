@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link href="<?php echo base_url("assets/dist/css/bootstrap.min.css") ?>" rel="stylesheet" />
     <link href="<?php echo base_url("assets/css/custom.css") ?>" rel="stylesheet" />
-    <script type="module" src="<?php echo base_url("assets/js/src/carousel.js") ?>"></script>>
+    <script type="module" src="<?php echo base_url("assets/js/src/carousel.js") ?>"></script>
      <!-- Javascript -->
      <script type="text/javascript" src="<?php echo base_url("assets/dist/js/jquery.min.js") ?>"></script>
     <!-- Bootstrap tooltips -->
@@ -156,6 +156,11 @@
       </tbody>
     </table>
   
+                        <div class="row">
+							<div class="col">
+								<?php print_r($data); ?>
+							</div>
+						</div>
 
     </div>
     <!-- end Of Content -->

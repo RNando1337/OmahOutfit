@@ -3,7 +3,7 @@
 class mdl_product extends CI_Model{	
 
    function getAllproduk(){
-    return $this->db->select('*')->from('product')->where('username', $this->session->userdata('username'))->get();
+    return $this->db->select('*')->from('product p')->join('category c', 'c.category_id=p.category_id')->where('username', $this->session->userdata('username'))->get();
    }
 
    function getKategori(){
@@ -48,6 +48,10 @@ class mdl_product extends CI_Model{
     $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
     return $hasil_rupiah;
    
+  }
+
+  function get_barangList($limit, $start){
+    return $this->db->where('username', $this->session->userdata('username'))->get('product', $limit, $start);
   }
 
 }
