@@ -150,11 +150,11 @@
 
         <?php
         $no = 1;
-        foreach($show_data->result_array() as $row) {
+        foreach($data->result_array() as $row) {
 
         ?>
           <tr>
-            <td><?= $no++; ?></td>
+            <td><?= ++$start; ?></td>
             <td><?= $row['category_id']; ?></td>
             <td><?= $row['kategori']; ?></td>
             <td><a href='<?= base_url() ?>4dm1n/edit?kat=<?= $row['category_id']; ?>'><i class='fas fa-edit' style='color: green;'></i>
@@ -165,10 +165,15 @@
         <?php
         }
         ?>
+
       </tbody>
     </table>
 
-
+    <div class="row">
+							<div class="col">
+								<?php echo $pagination; ?>
+							</div>
+						</div>
 
   </div>
 

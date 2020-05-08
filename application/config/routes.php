@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['4dm1n'] = 'adminpanel/login';
 $route['4dm1n/dashboard'] = 'adminpanel/dashboard';
+$route['4dm1n/kategori/(:num)'] = 'adminpanel/dashboard/kategori/$1';
 $route['4dm1n/kategori'] = 'adminpanel/dashboard/kategori';
 $route['4dm1n/addKategori'] = 'adminpanel/dashboard/tbhKategori';
 $route['4dm1n/hapus'] = 'adminpanel/dashboard/hps';

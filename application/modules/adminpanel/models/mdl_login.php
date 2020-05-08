@@ -34,4 +34,8 @@ class mdl_login extends CI_Model{
         return $this->db->select('count(*) as id')->from('category')->get();
       }
 
+      function get_kategoriList($limit, $start){
+        return $this->db->get('category', $limit, $start);
+      }
+
 }

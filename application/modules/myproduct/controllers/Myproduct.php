@@ -10,7 +10,7 @@ class Myproduct extends MX_Controller {
         }
 
         
-	public function index($num = '')
+	public function index()
 	{
         if($this->session->userdata('username')){
             
