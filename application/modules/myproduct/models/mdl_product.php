@@ -51,7 +51,7 @@ class mdl_product extends CI_Model{
   }
 
   function get_barangList($limit, $start){
-    return $this->db->where('username', $this->session->userdata('username'))->get('product', $limit, $start);
+    return $this->db->join('category c', 'c.category_id=p.category_id')->where('username', $this->session->userdata('username'))->get('product p', $limit, $start);
   }
 
 }

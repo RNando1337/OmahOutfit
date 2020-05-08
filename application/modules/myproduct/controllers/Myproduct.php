@@ -6,19 +6,20 @@ class Myproduct extends MX_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('mdl_product');
-        $this->load->library(array('form_validation','session'));
+        $this->load->library(array('form_validation','session','pagination'));
         }
 
         
-	public function index()
+	public function index($num = '')
 	{
         if($this->session->userdata('username')){
             
-            $config['base_url'] = "http://localhost/e-Commerce/OmahOutfit/product";
-            $config['total_rows'] = $this->mdl_product->getAllproduk()->num_rows();
-            $config['per_page'] = 4;
-            $config['uri_segment'] = 1;
-            $config['num_links'] = floor($config['total_rows']/$config['per_page']);
+            $config['base_url'] = "http://localhost/e-Commerce/OmahOutfit/myproduct/index";
+            $config['total_rows'] = $this->db->count_all('product');
+            $config['per_page'] = 2;
+            $config['uri_segment'] = 3;
+            $jmldata = $config['total_rows']/$config['per_page'];
+            $config['num_links'] = floor($jmldata);
 
             //Style pagination
             $config['first_link']       = 'First';
@@ -32,7 +33,7 @@ class Myproduct extends MX_Controller {
             $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
             $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
             $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-            $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+            $config['next_tagl_close']  = '<span aria-hidden="true"></span></span></li>';
             $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
             $config['prev_tagl_close']  = '</span>Next</li>';
             $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
@@ -40,11 +41,10 @@ class Myproduct extends MX_Controller {
             $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
             $config['last_tagl_close']  = '</span></li>';
 
-            echo $this->pagination->initialize($config);
-            $data['page'] = ($this->uri->segment($config['uri_segment'])) ? $this->uri->segment(4) : 0;
-            $data['data'] = $this->mdl_product->get_barangList($config["per_page"], $data['page']);
+            $this->pagination->initialize($config);
+            $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data['data'] = $this->mdl_product->get_barangList($config['per_page'], $data['page']);
             $data['pagination'] = $this->pagination->create_links();
-            $data['show_data'] = $this->mdl_product->getAllproduk();
 
             $this->load->view('myproduct', $data);  
         }else{

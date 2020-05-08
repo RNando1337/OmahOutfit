@@ -134,12 +134,12 @@
 
         <?php
         $no = 1;
-        foreach($show_data->result_array() as $row) {
+        foreach($data->result_array() as $row):
             
         ?>
           <tr>
             <td><?= $no++; ?></td>
-            <td><img src="<?php base_url() ?>images/product/<?= $row['productImage']; ?>" width="150px" height="150px"></td>
+            <td><img src="http://localhost/e-Commerce/OmahOutfit/images/product/<?= $row['productImage']; ?>" width="150px" height="150px"></td>
             <td><?= $row['productName']; ?></td>
             <td><?= $row['kategori'] ?></td>
             <td><?= $row['productDesk']; ?></td>
@@ -151,14 +151,14 @@
           </tr>
 
         <?php
-        }
+        endforeach;
         ?>
       </tbody>
     </table>
   
                         <div class="row">
 							<div class="col">
-								<?php print_r($data); ?>
+								<?php echo $pagination; ?>
 							</div>
 						</div>
 
