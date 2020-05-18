@@ -15,12 +15,12 @@ class Dashboard extends MX_Controller
     }
 
     function logout(){
-        $this->session->unset_userdata('useradmin');
-		redirect(base_url('adminpanel/Login'));
-    }
+		$this->session->sess_destroy();
+		redirect(base_url('4dm1n'));
+	}
 
     function kategori($num = 1){
-        if($this->session->userdata('useradmin')){
+        if($this->session->userdata('username')){
             $num++;
             $config['base_url'] = "http://localhost/e-Commerce/OmahOutfit/4dm1n/kategori/";
             $config['total_rows'] = $this->mdl_login->getAllkategori()->num_rows();
@@ -99,6 +99,12 @@ class Dashboard extends MX_Controller
             $id = $this->input->get('kat');
             $this->db->query('DELETE FROM category WHERE category_id="'.$id.'"');
             redirect('4dm1n/kategori');
+        }
+    }
+
+    function pengguna(){
+        if($this->session->userdata('role') != 'admin'){
+
         }
     }
 }
