@@ -7,6 +7,8 @@
     <link href="<?php echo base_url("assets/dist/css/bootstrap.min.css") ?>" rel="stylesheet" />
     <link href="<?php echo base_url("assets/css/custom.css") ?>" rel="stylesheet" />
     <script type="module" src="<?php echo base_url("assets/js/src/carousel.js") ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/dist/js/jquery.min.js") ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/dist/config.js") ?>"></script>
 </head>
 
 <body>
@@ -41,9 +43,9 @@
                 <form class="form-set ml-3 mt-1" style="display: flex;" method="post">
                     <!-- Kat -->
                     <input class="search-input pl-2" type="text" name="barang" maxlength="50"
-                        placeholder="Cari di OmahOutfit">
+                        placeholder="Cari di OmahOutfit" id="kunci">
                     <button type="submit" class="search-button navColor float-right" name="cari"
-                        id="basic-addon11"><i class="fas fa-search"></i></button>
+                        id="search"><i class="fas fa-search"></i></button>
                 </form>
 
 
@@ -107,7 +109,7 @@
                             foreach($search->result as $row):
                     ?>
 
-                    <div class="col-2 mb-3 mr-n2">
+                    <div class="col-2 mb-3 mr-n2" id="view">
                     <div class="w-100 h-75">
                         <a href="<?=base_url()?>Products?prodID=<?= $row['productID']; ?>" class="link">
                             <div class="card">
