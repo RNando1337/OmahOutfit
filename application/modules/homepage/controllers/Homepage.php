@@ -81,6 +81,20 @@ class Homepage extends MX_Controller {
 	}
 
 
+
+	function search(){
+		$kunci = $this->input->post('barang');
+		$pencarian = $this->mdl_product->search($kunci);
+
+		$data['search'] = $pencarian;
+		$hasil = $this->load->view('search', $data, true);
+		$callback = array(
+			'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi
+			);
+			echo json_encode($callback); // konversi varibael $callback menjadi JSON
+	}
+
+
 	function logout(){
         $this->session->unset_userdata('username');
 		redirect(base_url());

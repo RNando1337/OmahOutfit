@@ -50,4 +50,13 @@ class mdl_product extends CI_Model{
     return $hasil_rupiah;
   }
 
+  function search($kunci){
+    $this->db->like('productName', $kunci);
+    $this->db->or_like('productDesk', $kunci);
+
+    $result = $this->db->get('product');
+    return $result;
+
+  }
+
 }
