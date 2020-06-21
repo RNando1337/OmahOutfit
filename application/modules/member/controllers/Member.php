@@ -45,7 +45,6 @@ function auth_login(){
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
             Login Gagal
             </div>');  
-            redirect(base_url('member'), 'refresh');
         }
 
         if($this->input->post('Daftar')){

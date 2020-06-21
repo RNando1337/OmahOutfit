@@ -19,14 +19,17 @@ class Dashboard extends MX_Controller
 		redirect(base_url('4dm1n'));
 	}
 
-    function kategori($num = 1){
+    function kategori(){
         if($this->session->userdata('username')){
-            $num++;
             $config['base_url'] = "http://localhost/e-Commerce/OmahOutfit/4dm1n/kategori/";
             $config['total_rows'] = $this->mdl_login->getAllkategori()->num_rows();
             $config['per_page'] = 5;
+            $config['uri_segment'] = 3;
+            $jmldata = $config['total_rows']/$config['per_page'];
+            $config['num_links'] = floor($jmldata);
 
             //Style pagination
+            $config['use_page_numbers'] = TRUE;
             $config['first_link']       = 'First';
             $config['last_link']        = 'Last';
             $config['next_link']        = 'Next';
@@ -47,13 +50,56 @@ class Dashboard extends MX_Controller
             $config['last_tagl_close']  = '</span></li>';
 
             $this->pagination->initialize($config);
-            $data['start'] = $this->uri->segment(3);
+            $data['start'] = $this->uri->segment(3) ? $this->uri->segment(3) : 0;
             $data['data'] = $this->mdl_login->get_kategoriList($config['per_page'], $data['start']);
             $data['pagination'] = $this->pagination->create_links();
 
 
         $data['show_data'] = $this->mdl_login->getAllkategori();
         $this->load->view('kategori', $data);
+        }else{
+            redirect(base_url('adminpanel/Login'));
+        }
+    }
+
+    function product_list(){
+        if($this->session->userdata('username')){
+            $config['base_url'] = "http://localhost/e-Commerce/OmahOutfit/4dm1n/product/";
+            $config['total_rows'] = $this->mdl_login->get_Allproduct()->num_rows();
+            $config['per_page'] = 5;
+            $config['uri_segment'] = 5;
+            $jmldata = $config['total_rows']/$config['per_page'];
+            $config['num_links'] = floor($jmldata);
+
+            //Style pagination
+            $config['use_page_numbers'] = TRUE;
+            $config['first_link']       = 'First';
+            $config['last_link']        = 'Last';
+            $config['next_link']        = 'Next';
+            $config['prev_link']        = 'Prev';
+            $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+            $config['full_tag_close']   = '</ul></nav></div>';
+            $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+            $config['num_tag_close']    = '</span></li>';
+            $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+            $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+            $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+            $config['next_tagl_close']  = '<span aria-hidden="true"></span></span></li>';
+            $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+            $config['prev_tagl_close']  = '</span>Next</li>';
+            $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+            $config['first_tagl_close'] = '</span></li>';
+            $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+            $config['last_tagl_close']  = '</span></li>';
+
+            $this->pagination->initialize($config);
+            $data['start'] = $this->uri->segment(5) ? $this->uri->segment(5) : 0;
+            $data['data'] = $this->mdl_login->get_productList($config['per_page'], $data['start']);
+            $data['pagination'] = $this->pagination->create_links();
+
+
+            $data['show_data'] = $this->mdl_login->get_Allproduct();
+            $this->load->view('product', $data);
         }else{
             redirect(base_url('adminpanel/Login'));
         }
@@ -98,6 +144,10 @@ class Dashboard extends MX_Controller
         if($this->input->get('kat')){
             $id = $this->input->get('kat');
             $this->db->query('DELETE FROM category WHERE category_id="'.$id.'"');
+            redirect('4dm1n/kategori');
+        }else if($this->input->get('prod')){
+            $id = $this->input->get('kat');
+            $this->db->query('DELETE FROM product WHERE productID="'.$id.'"');
             redirect('4dm1n/kategori');
         }
     }

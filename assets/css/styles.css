@@ -389,10 +389,6 @@
             margin-top: 30px;
         }
 
-        .box-content-image{
-            
-        }
-
         .marginprevious-full{
             padding: 15px;
             margin:auto;
@@ -421,9 +417,6 @@
             color: white;
         }
 
-        .title-porduct{
-
-        }
 
         /* END */
 
@@ -441,6 +434,21 @@
 
         .link:hover {
             text-decoration: none;
+        }
+
+        
+        .product-button {
+            border-radius: 3px;
+            display: inline-block;
+            margin: 0px;
+            padding: 5px 12px;
+            text-align: center;
+            background-color: #f24c61;
+            border: 1px solid #f24c61;
+        }
+
+        .product-button:hover {
+            cursor: pointer;
         }
 
 

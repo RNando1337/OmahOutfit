@@ -9,12 +9,15 @@
     <script type="module" src="<?php echo base_url("assets/js/src/carousel.js") ?>"></script>
      <!-- Javascript -->
      <script type="text/javascript" src="<?php echo base_url("assets/dist/js/jquery.min.js") ?>"></script>
+     
+    <script type="text/javascript" src="<?php echo base_url("assets/dist/config.js") ?>"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="<?php echo base_url("assets/dist/js/popper.min.js") ?>"></script>
     <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="<?php echo base_url("assets/dist/js/bootstrap.min.js") ?>"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?php echo base_url("assets/dist/js/mdb.min.js") ?>"></script>
+    
 </head>
 
 <body>
@@ -111,9 +114,18 @@
 
     <!-- content -->
     <div class="container-fluid p-5">
-
     <h2>Produk Saya</h2>
+    <div class="float right">
+            <form class="mt-1" style="display: flex;" method="post">
+                    <!-- Kat -->
+                    <input class="search-input p-2" id="search_text" type="text" size="50" name="barang" maxlength="10"
+                        placeholder="Cari Produk Saya">
+                    
+                </form>
+                </div>
 
+<div id="result"></div>
+<!-- 
     <table class="table">
       <thead class="thead-light">
         <tr>
@@ -154,7 +166,7 @@
         endforeach;
         ?>
       </tbody>
-    </table>
+    </table> -->
   
                         <div class="row">
 							<div class="col">

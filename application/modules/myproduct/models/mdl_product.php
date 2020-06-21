@@ -11,7 +11,9 @@ class mdl_product extends CI_Model{
    }
 
    function getByID($id){
-    return $this->db->select('*')->from('product')->where('productID', $id)->get();
+    $this->db->join('category c', 'c.category_id=p.category_id')->where('username', $this->session->userdata('username'));
+    $this->db->where('productID', $id);
+    return $this->db->get('product p');
    }
 
 
@@ -53,5 +55,35 @@ class mdl_product extends CI_Model{
   function get_barangList($limit, $start){
     return $this->db->join('category c', 'c.category_id=p.category_id')->where('username', $this->session->userdata('username'))->get('product p', $limit, $start);
   }
+
+
+  function query($username,$kunci){
+    $query = "SELECT * FROM product p JOIN category c ON c.category_id=p.category_id WHERE username = '.$username.' AND productName LIKE ";
+    return $query;
+  }
+
+  function search($kunci){
+    $this->db->join('category c', 'c.category_id=p.category_id')->where('username', $this->session->userdata('username'));
+    $this->db->like('productName', $kunci);
+    $this->db->or_like('productDesk', $kunci);
+
+    $result = $this->db->get('product p');
+    return $result;
+  }
+
+  function count_all(){
+    $this->db->join('category c', 'c.category_id=p.category_id')->where('username', $this->session->userdata('username'));
+    $this->db->like('productName', $kunci);
+    $this->db->or_like('productDesk', $kunci);
+    $result = $this->db->get('product p');
+    return $result;
+  }
+
+  function fetch_data($kunci,$limit,$start){
+    $output = '';
+    $query = $this->search($kunci);
+  }
+
+  // SELECT * FROM `product` `p` JOIN `category` `c` ON `c`.`category_id`=`p`.`category_id` WHERE `username` = 'googlel33t' AND productName LIKE '%%' ESCAPE '!' OR productDes LIKE '%%' ESCAPE '!'
 
 }

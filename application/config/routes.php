@@ -49,15 +49,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['4dm1n'] = 'adminpanel/login';
-$route['4dm1n/dashboard'] = 'adminpanel/dashboard';
+
+/* Admin Settings */
+
+$route['4dm1n'] = 'adminpanel/login'; // Login
+$route['4dm1n/dashboard'] = 'adminpanel/dashboard'; // Dashboard
+
+// Kategori
 $route['4dm1n/kategori/(:num)'] = 'adminpanel/dashboard/kategori/$1';
 $route['4dm1n/kategori'] = 'adminpanel/dashboard/kategori';
 $route['4dm1n/addKategori'] = 'adminpanel/dashboard/tbhKategori';
+
+// Product
+$route['4dm1n/product'] = 'adminpanel/dashboard/product_list';
+
+//Settings
 $route['4dm1n/hapus'] = 'adminpanel/dashboard/hps';
 $route['4dm1n/edit'] = 'adminpanel/dashboard/edit';
-$route['member'] = 'member/member';
-$route['logout'] = 'homepage/logout';
+
+/* EnD */ 
+
+
+/*! Member Settings */
+
+$route['member'] = 'member/member'; // Login
+$route['logout'] = 'homepage/logout'; // Logout
+
+// Porduct Setting
+
 $route['product'] = 'myproduct/myproduct';
 $route['product/add'] = 'addproduct/product';
 $route['Products'] = 'homepage/Products';

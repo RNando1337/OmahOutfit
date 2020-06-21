@@ -25,12 +25,12 @@ class Login extends MX_Controller
         $ip = $this->input->ip_address();
         $usr = $this->UserModel->get($user);
         $where = array(
-            'username' => $user,
+            'usernames' => $user,
             'password' => md5($pass)
             );
         $session = array(
             'authenticated'=>true,
-            'username' => $usr->username,
+            'usernames' => $usr->username,
             'role' => $usr->role
         );    
             $cek = $this->mdl_login->cek_login("useradmin",$where)->num_rows();
