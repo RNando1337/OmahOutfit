@@ -62,16 +62,16 @@ class mdl_product extends CI_Model{
     return $query;
   }
 
-  function search($kunci){
+  function search($kunci,$limit,$start){
     $this->db->join('category c', 'c.category_id=p.category_id')->where('username', $this->session->userdata('username'));
     $this->db->like('productName', $kunci);
     $this->db->or_like('productDesk', $kunci);
 
-    $result = $this->db->get('product p');
+    $result = $this->db->get('product p', 5,0);
     return $result;
   }
 
-  function count_all(){
+  function count_all($kunci){
     $this->db->join('category c', 'c.category_id=p.category_id')->where('username', $this->session->userdata('username'));
     $this->db->like('productName', $kunci);
     $this->db->or_like('productDesk', $kunci);
@@ -81,7 +81,30 @@ class mdl_product extends CI_Model{
 
   function fetch_data($kunci,$limit,$start){
     $output = '';
-    $query = $this->search($kunci);
+    $query = $this->search($kunci,$limit,$start);
+
+    if($query->num_rows() > 0){
+      $no = 1;
+      foreach($query->result_array() as $row){
+        $output .= '<tr>
+        <td>'. $no++ .'</td>
+        <td><img src="'.base_url().'images/product/'.  $row['productImage'] .'" width="150px" height="150px"></td>
+        <td>'. $row['productName'] .'</td>
+        <td>'. $row['kategori'] .'</td>
+        <td>'. $row['productDesk'] .'</td>
+        <td>'. $row['productStok'] .'</td>
+        <td>'. $this->mdl_product->rupiah($row["productPrice"]) .'</td>
+        <td><a href="'. base_url() .'myproduct/edit?id='. $row['productID'] .'"><i class="fas fa-edit" style="color: green;"></i>
+          </a>&nbsp<a href="'. base_url() .'myproduct/hps?id='. $row['productID'] .'"><i class="far fa-times-circle" style="color: red;"></i>
+          </a></td>
+      </tr>';
+      }
+    }else{
+      $output .= '<tr>
+      <td colspan="8">No Data Found</td>
+     </tr>';
+    }
+    return $output;
   }
 
   // SELECT * FROM `product` `p` JOIN `category` `c` ON `c`.`category_id`=`p`.`category_id` WHERE `username` = 'googlel33t' AND productName LIKE '%%' ESCAPE '!' OR productDes LIKE '%%' ESCAPE '!'

@@ -125,6 +125,7 @@
                 </div>
 
 <div id="result"></div>
+                
 <!-- 
     <table class="table">
       <thead class="thead-light">
@@ -169,8 +170,8 @@
     </table> -->
   
                         <div class="row">
-							<div class="col">
-								<?php echo $pagination; ?>
+							<div class="col" >
+                            <div id="pagination_link"></div>
 							</div>
 						</div>
 

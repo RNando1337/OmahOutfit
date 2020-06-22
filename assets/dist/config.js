@@ -1,4 +1,27 @@
 
+// $(document).ready(function () {
+
+//     $("#search_text").click(function () {
+//         var action = 'fetch_data';
+//         $.ajax({
+//             url: "http://localhost/e-Commerce/OmahOutfit/myproduct/fetch_data",
+//             type: "POST",
+//             dataType: "JSON",
+//             data: { action: action, barang: $("#barang").val() },
+//             success: function (data) {
+//                 $(".result").html(data.product_list);
+//                 $('#pagination_link').html(data.pagination_link);
+//             },
+//         });
+//     });
+// });
+
+
+
+
+
+
+
 $(document).ready(function () {
 
     load_data();
