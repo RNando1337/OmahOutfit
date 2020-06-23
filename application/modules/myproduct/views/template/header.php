@@ -23,12 +23,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <form class="form-set ml-3 mt-1" style="display: flex;" method="post">
+            <form class="form-set ml-3 mt-1" action="<?php echo base_url() ?>myproduct/pencarian" style="display: flex;" method="post">
                     <!-- Kat -->
                     <input class="search-input pl-2" type="text" name="barang" maxlength="50"
                         placeholder="Cari di OmahOutfit">
-                    <button type="submit" class="search-button navColor float-right" name="cari"
-                        id="basic-addon11"><i class="fas fa-search"></i></button>
+                        <input type="submit" class="search-button navColor float-right pt-1" name="cari"
+                        id="basic-addon11" value="&#xf002;" style="font-family: 'Arial' , 'FontAwesome'; font-size:20px;">
                 </form>
 
             <!-- Default form subscription -->

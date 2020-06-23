@@ -19,6 +19,14 @@ class Cart extends MX_Controller {
         }
 	}
 
+	function pencarian(){
+		$kunci = $this->input->post('barang');
+		print_r($this->input->post('cari'));
+			if($this->input->post('cari')){
+			redirect("http://localhost/e-Commerce/OmahOutfit/search?keyword=".$kunci."");
+			}
+	}
+
 	
 
 }

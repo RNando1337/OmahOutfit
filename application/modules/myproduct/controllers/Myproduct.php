@@ -212,4 +212,14 @@ class Myproduct extends MX_Controller {
 
     }
 
+
+    function pencarian(){
+		$kunci = $this->input->post('barang');
+		var_dump($kunci);
+		print_r($this->input->post('cari'));
+			if($this->input->post('cari')){
+			redirect("http://localhost/e-Commerce/OmahOutfit/search?keyword=".$kunci."");
+			}
+	}
+
 }

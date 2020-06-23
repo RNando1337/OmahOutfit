@@ -2,7 +2,7 @@
         @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
         
-        
+        input { font-family: 'FontAwesome'; }
 
         .garisY {
             width: 0.5px;
@@ -63,6 +63,7 @@
             background-color: #f24c61;
             color : #fff;
         }
+
 
 
         .header-content{
