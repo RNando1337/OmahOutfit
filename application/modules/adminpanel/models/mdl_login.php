@@ -53,4 +53,8 @@ class mdl_login extends CI_Model{
         return $hasil_rupiah;
       }
 
+      function getPengguna(){
+        return $this->db->get('member');
+      }
+
 }

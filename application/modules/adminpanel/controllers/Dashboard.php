@@ -20,7 +20,7 @@ class Dashboard extends MX_Controller
 	}
 
     function kategori(){
-        if($this->session->userdata('username')){
+        if($this->session->userdata('usernames')){
             $config['base_url'] = "http://localhost/e-Commerce/OmahOutfit/4dm1n/kategori/";
             $config['total_rows'] = $this->mdl_login->getAllkategori()->num_rows();
             $config['per_page'] = 5;
@@ -63,7 +63,7 @@ class Dashboard extends MX_Controller
     }
 
     function product_list(){
-        if($this->session->userdata('username')){
+        if($this->session->userdata('usernames')){
             $config['base_url'] = "http://localhost/e-Commerce/OmahOutfit/4dm1n/product/";
             $config['total_rows'] = $this->mdl_login->get_Allproduct()->num_rows();
             $config['per_page'] = 5;
@@ -146,15 +146,22 @@ class Dashboard extends MX_Controller
             $this->db->query('DELETE FROM category WHERE category_id="'.$id.'"');
             redirect('4dm1n/kategori');
         }else if($this->input->get('prod')){
-            $id = $this->input->get('kat');
+            $id = $this->input->get('prod');
             $this->db->query('DELETE FROM product WHERE productID="'.$id.'"');
-            redirect('4dm1n/kategori');
+            redirect('4dm1n/product');
+        }else if($this->input->get('peng')){
+            $id = $this->input->get('peng');
+            $this->db->query('DELETE FROM product WHERE id="'.$id.'"');
+            redirect('4dm1n/pengguna');
         }
     }
 
     function pengguna(){
-        if($this->session->userdata('role') != 'admin'){
-            $this->load->view('pengguna');
+        if($this->session->userdata('role') == 'admin'){
+            $data['pengguna'] = $this->mdl_login->getPengguna();
+            $this->load->view('pengguna', $data);
+        }else{
+            redirect(base_url());
         }
     }
 }

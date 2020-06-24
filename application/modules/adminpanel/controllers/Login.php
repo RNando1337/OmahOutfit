@@ -25,7 +25,7 @@ class Login extends MX_Controller
         $ip = $this->input->ip_address();
         $usr = $this->UserModel->get($user);
         $where = array(
-            'usernames' => $user,
+            'username' => $user,
             'password' => md5($pass)
             );
         $session = array(

@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+<html>
+
+<head>
+    <title>Online Shop</title>
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="<?php echo base_url("assets/dist/css/bootstrap.min.css") ?>">
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="<?php echo base_url("assets/dist/css/mdb.min.css") ?>">
@@ -92,27 +97,26 @@
       <thead class="thead-light">
         <tr>
           <th scope="col">No</th>
-          <th scope="col">Product Kode</th>
-          <th class="w-25" scope="col">Kategori</th>
-          <th class="w-25" scope="col">Nama Product</th>
-          <th class="w-25" scope="col">Penjual</th>
+          <th scope="col">Nama</th>
+          <th class="w-25" scope="col">E-mail</th>
+          <th class="w-25" scope="col">Telp</th>
           <th scope="col">Aksi</th>
         </tr>
       </thead>
       <tbody>
 
       <?php
-        foreach($data->result_array() as $row) :
+        $start=0;
+        foreach($pengguna->result_array() as $row) :
 
         ?>
 
             <tr>
             <td><?= ++$start; ?></td>
-            <td><?= $row['productID']; ?></td>
-            <td><?= $row['kategori']; ?></td>
-            <td><?= $row['productName']; ?></td>
-            <td><?= $row['username']; ?></td>
-            <td><a href='<?= base_url() ?>4dm1n/hapus?prod=<?= $row['productID']; ?>'><i class='far fa-times-circle' style='color: red;'></i>
+            <td><?= $row['name']; ?></td>
+            <td><?= $row['email']; ?></td>
+            <td><?= $row['telp']; ?></td>
+            <td><a href='<?= base_url() ?>4dm1n/hapus?peng=<?= $row['id']; ?>'><i class='far fa-times-circle' style='color: red;'></i>
               </a></td>
           </tr>
 
@@ -122,13 +126,6 @@
 
         </tbody>
      </table>
-
-                <div class="row">
-							<div class="col">
-								<?php echo $pagination; ?>
-							</div>
-						</div>
-
                 </div>
 
  <!-- Javascript -->

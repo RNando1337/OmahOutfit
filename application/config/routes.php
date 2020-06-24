@@ -63,6 +63,11 @@ $route['4dm1n/addKategori'] = 'adminpanel/dashboard/tbhKategori';
 // Product
 $route['4dm1n/product'] = 'adminpanel/dashboard/product_list';
 
+
+//Pengguna
+$route['4dm1n/pengguna'] = 'adminpanel/dashboard/pengguna';
+
+
 //Settings
 $route['4dm1n/hapus'] = 'adminpanel/dashboard/hps';
 $route['4dm1n/edit'] = 'adminpanel/dashboard/edit';

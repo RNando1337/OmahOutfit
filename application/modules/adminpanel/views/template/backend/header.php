@@ -20,7 +20,7 @@
       if($this->session->userdata('role') === 'admin'){
       ?>
       <li class="nav-item">
-      <a class="nav-link" href="<?php echo base_url($this->uri->uri_string()); ?>">Pengguna</a>
+      <a class="nav-link" href="<?= base_url('4dm1n/pengguna'); ?>">Pengguna</a>
       </li>
       <?php
       }
