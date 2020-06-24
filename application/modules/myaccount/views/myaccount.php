@@ -47,7 +47,7 @@
             <td><input type="number" name="stok" value="" placholder="Masukan Stok Barang" class="form-control" required></td>
           </tr>
           <tr>
-            <th scope="row">Deskripsi Profil</th>
+            <th scope="row">Alamat</th>
             <td><textarea type="text" name="deskripsi" placholder="Masukan Deskripsi Barang" class="form-control" rows="4" required></textarea></td>
           </tr>
 

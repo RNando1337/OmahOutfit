@@ -12,7 +12,11 @@ class Myaccount extends MX_Controller {
         
 	public function index()
 	{
-		$this->load->view('myaccount');
+        if($this->session->userdata('username')){
+        $this->load->view('myaccount');
+        }else{
+            redirect('member');
+        }
     }
     
 }
