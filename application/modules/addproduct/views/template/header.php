@@ -18,7 +18,7 @@
 
     <nav class="navbar navbar-expand-lg pr-4 navColor">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="head-img" src="<?= base_url() ?>images/LogoNew.png" width="180px" height="45px" /></a>
+            <a class="navbar-brand" href="<?= base_url() ?>"><img class="head-img" src="<?= base_url() ?>images/LogoNew.png" width="180px" height="45px" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent-555" aria-controls="navbarSupportedContent-555"
                 aria-expanded="false" aria-label="Toggle navigation">

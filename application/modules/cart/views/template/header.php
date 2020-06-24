@@ -45,11 +45,6 @@
                                 <i class="fas fa-shopping-cart navColor"></i>
                             </a>
                     </li>
-                    <li class="nav-item pt-2 pr-3">
-                        <a href="#">
-                            <i class="fas fa-bell navColor"></i>
-                        </a>
-                    </li>
                     <div class="garisY"></div>
                     <!-- Login Function -->
                     <?php 
