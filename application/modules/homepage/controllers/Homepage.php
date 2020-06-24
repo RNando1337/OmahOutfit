@@ -99,7 +99,7 @@ class Homepage extends MX_Controller {
 		$kunci = $this->input->post('barang');
 		print_r($this->input->post('cari'));
 			if($this->input->post('cari')){
-			redirect("http://localhost/e-Commerce/OmahOutfit/search?keyword=".$kunci."");
+				redirect("http://localhost/e-Commerce/OmahOutfit/search/index/?keyword=".$kunci."");
 			}
 	}
 

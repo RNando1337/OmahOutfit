@@ -67,7 +67,7 @@ class Dashboard extends MX_Controller
             $config['base_url'] = "http://localhost/e-Commerce/OmahOutfit/4dm1n/product/";
             $config['total_rows'] = $this->mdl_login->get_Allproduct()->num_rows();
             $config['per_page'] = 5;
-            $config['uri_segment'] = 5;
+            $config['uri_segment'] = 3;
             $jmldata = $config['total_rows']/$config['per_page'];
             $config['num_links'] = floor($jmldata);
 
@@ -93,7 +93,7 @@ class Dashboard extends MX_Controller
             $config['last_tagl_close']  = '</span></li>';
 
             $this->pagination->initialize($config);
-            $data['start'] = $this->uri->segment(5) ? $this->uri->segment(5) : 0;
+            $data['start'] = $this->uri->segment(3) ? $this->uri->segment(3) : 0;
             $data['data'] = $this->mdl_login->get_productList($config['per_page'], $data['start']);
             $data['pagination'] = $this->pagination->create_links();
 
@@ -154,7 +154,7 @@ class Dashboard extends MX_Controller
 
     function pengguna(){
         if($this->session->userdata('role') != 'admin'){
-
+            $this->load->view('pengguna');
         }
     }
 }

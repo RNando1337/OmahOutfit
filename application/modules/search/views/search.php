@@ -36,8 +36,8 @@ $this->load->view('template/header');
 
     <div class="row">
                     <?php
-                        if(!empty($products->result_array()) && !empty($title)){
-                            foreach($products->result_array() as $row):
+                        if($data != NULL && !empty($title)){
+                            foreach($data->result_array() as $row):
                     ?>
 
         <div class="col-2 mb-3 mr-n2">
@@ -67,18 +67,20 @@ $this->load->view('template/header');
                         
                         ?>
                         </div>
-                        <div class="alert alert-danger">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Barang Tidak Ditemukan</div>
+                        <?= $output ?>
 
                     <?php } ?>
 
                             
-                       
-                    <!-- <div class="row">
+                       <?php
+                       if($data != NULL && !empty($title)):
+                       ?>
+                    <div class="row">
 							<div class="col">
 								<?php echo $pagination; ?>
 							</div>
-						</div> -->
+                        </div>
+                       <? endif; ?>
 
     </div>
 
