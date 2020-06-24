@@ -23,7 +23,7 @@
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-                <form class="form-set ml-3 mt-1" style="display: flex;" method="post">
+                <form class="form-set ml-3 mt-1" action="<?= base_url() ?>Search/loadBarang" style="display: flex;" method="post">
                     <!-- Kat -->
                     <input class="search-input pl-2" type="text" name="barang" maxlength="50"
                         placeholder="Cari di OmahOutfit" id="kunci">
