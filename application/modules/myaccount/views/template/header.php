@@ -54,7 +54,7 @@
                                 <span class="drop">'.$this->session->userdata('username').'</span>
                                 </a>
                          <div class="dropdown-menu" id="dropdownMaster" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Profile</a>
+                          <a class="dropdown-item" href="'.base_url().'myaccount">Profile</a>
                           <a class="dropdown-item" href="'.base_url().'product/add">Tambah Produk</a>
                           <a class="dropdown-item" href="'.base_url().'product">Produk Saya</a>
                           <a class="dropdown-item" href="'.base_url().'logout">Logout</a>

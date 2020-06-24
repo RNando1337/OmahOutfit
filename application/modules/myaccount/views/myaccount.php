@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Account Settings | OmahOutfit</title>
+    <title><?= $rules ?> | OmahOutfit</title>
     <meta charset=utf-8 />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -35,21 +35,32 @@
 
         
     <h2>Ubah Profil</h2>
-    <form action="<?= base_url() ?>myproduct/edit?id=<?= $this->input->get('id') ?>" method="post" enctype="multipart/form-data">
+    <form action="<?= base_url() ?>myaccount/index" method="post" enctype="multipart/form-data">
       <table class="table w-50">
         <tbody>
+        <?php
+          foreach($pengguna as $row):
+            ?>
           <tr>
             <th scope="row">Nama Pengguna</th>
-            <td><input type="text" name="nama" value="" placholder="Masukan Kategori Barang" class="form-control" required></td>
+            <td><input type="text" name="nama" value="<?= $row['username'] ?>" placholder="Masukan Kategori Barang" class="form-control" required></td>
           </tr>
           <tr>
-            <th scope="row">Password</th>
-            <td><input type="number" name="stok" value="" placholder="Masukan Stok Barang" class="form-control" required></td>
+            <th scope="row">Telp</th>
+            <td><input type="text" name="telp" value="<?= $row['telp'] ?>" placholder="Masukan Stok Barang" class="form-control" required></td>
           </tr>
           <tr>
             <th scope="row">Alamat</th>
-            <td><textarea type="text" name="deskripsi" placholder="Masukan Deskripsi Barang" class="form-control" rows="4" required></textarea></td>
+            <td><textarea type="text" name="deskripsi" placholder="Masukan Deskripsi Barang" class="form-control" rows="4" required><?= $row['Alamat'] ?></textarea></td>
           </tr>
+          <tr>
+            <th scope="row">Konfirmasi Password</th>
+            <td><input type="password" name="stok" value="" placholder="Masukan Stok Barang" class="form-control" required></td>
+          </tr>
+
+          <?php
+            endforeach;
+          ?>
 
           <tr>
             <td></td>            
