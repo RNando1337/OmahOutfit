@@ -13,5 +13,9 @@ class mdl_account extends CI_Model{
         $this->db->where('password', $pass);
         return $this->db->get('member');
     }
+
+    function updateInfo($username,$pass){
+        
+    }
 }
 ?>

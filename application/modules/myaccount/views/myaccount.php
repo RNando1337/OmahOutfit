@@ -35,7 +35,8 @@
 
         
     <h2>Ubah Profil</h2>
-    <form action="<?= base_url() ?>myaccount/index" method="post" enctype="multipart/form-data">
+    <span class="wrongMsg"><?php if($this->input->post('Simpan')){echo "*".validation_errors(); } ?></span>
+    <form action="<?= base_url() ?>myaccount/index" method="post">
       <table class="table w-50">
         <tbody>
         <?php
@@ -43,7 +44,7 @@
             ?>
           <tr>
             <th scope="row">Nama Pengguna</th>
-            <td><input type="text" name="nama" value="<?= $row['username'] ?>" placholder="Masukan Kategori Barang" class="form-control" required></td>
+            <td><input type="text" name="nama" value="<?= $row['name'] ?>" placholder="Masukan Kategori Barang" class="form-control" required></td>
           </tr>
           <tr>
             <th scope="row">Telp</th>
@@ -51,11 +52,11 @@
           </tr>
           <tr>
             <th scope="row">Alamat</th>
-            <td><textarea type="text" name="deskripsi" placholder="Masukan Deskripsi Barang" class="form-control" rows="4" required><?= $row['Alamat'] ?></textarea></td>
+            <td><textarea type="text" name="Alamat" placholder="Masukan Deskripsi Barang" class="form-control" rows="4" required><?= $row['Alamat'] ?></textarea></td>
           </tr>
           <tr>
             <th scope="row">Konfirmasi Password</th>
-            <td><input type="password" name="stok" value="" placholder="Masukan Stok Barang" class="form-control" required></td>
+            <td><input type="password" name="pass" value="" placholder="Masukan Stok Barang" class="form-control" required></td>
           </tr>
 
           <?php
