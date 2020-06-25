@@ -1,10 +1,6 @@
 
     <div class="header-content navbar-expand-lg">
         <div class="container-fluid pt-1">
-            <div class="box float-left pl-4">
-                <span>Download the App</span>
-            </div>
-
             <div class="box float-right pr-3">
                 <a href="#"><i class="far fa-question-circle pr-1"></i>OmahOutfit Care</a>
             </div>
