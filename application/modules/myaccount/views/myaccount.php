@@ -35,6 +35,7 @@
 
         
     <h2>Ubah Profil</h2>
+    <?= $output ?>
     <span class="wrongMsg"><?php if($this->input->post('Simpan')){echo "*".validation_errors(); } ?></span>
     <form action="<?= base_url() ?>myaccount/index" method="post">
       <table class="table w-50">

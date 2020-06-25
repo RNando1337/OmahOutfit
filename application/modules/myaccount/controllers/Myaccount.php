@@ -35,6 +35,7 @@ class Myaccount extends MX_Controller {
         $checkPass = $this->mdl_account->checkPass($username,$pass)->row();
         if(!empty($checkPass)){
             if($checkPass->password == $pass){
+                if($this->input->post('Simpan')){
                 $this->db->query('UPDATE member SET name="'.$nama.'", telp="'.$telp.'", Alamat="'.$alamat.'" WHERE username="'.$username.'"');
                 $data['output'] .= '<div class="alert alert-success fade in">
                 <a href="#" class="close" data-dismiss="alert"
@@ -42,13 +43,18 @@ class Myaccount extends MX_Controller {
                 Data berhasil diubah
                 </div>';
                 redirect(base_url());
+                }
             }
         }else if(empty($checkPass)){
-            $data['output'] .= '<div class="alert alert-danger fade in">
-            <a href="#" class="close" data-dismiss="alert"
-            aria-label="close">&times;</a>
-            Data profil gagal diubah
-            </div>';
+            if($this->input->post('Simpan')){
+                if($pass != $checkPass->password){
+                    $data['output'] .= '<div class="alert alert-danger fade in">
+                    <a href="#" class="close" data-dismiss="alert"
+                    aria-label="close">&times;</a>
+                    Data profil gagal diubah
+                    </div>';
+                }
+            }
         }
         $data['pengguna'] = $this->mdl_account->getAccount($username)->result_array();
         $this->load->view('myaccount', $data);
