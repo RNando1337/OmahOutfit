@@ -8,7 +8,7 @@ OmahOutfit merupakan marketplace yang bertujuan untuk memberikan peluang usaha k
 Release Information
 *******************
 
-OmahOutfit V.1
+OmahOutfit
 ======
 Fitur Fix
 ------
@@ -18,9 +18,16 @@ Fitur Fix
 	2. Daftar Member.
 	3. Email Verification.
 	4. Menambahkan Produk.
-	5. Edit Produk.
-	6. Hapus Produk.
+	5. Mengubah Profil Pengguna.
+	6. Edit Produk.
+	7. Hapus Produk.
+	8. Pagination.
 2. **Admin** => Login -> http://localhost/4dm1n
 	1. Login Admin.
-	2. Tambah Kategori.
-	3. Hapus Kategori.
+	2. Lihat Pengguna.
+	3. Lihat Daftar Product dr Pengguna.
+	4. Tambah Kategori.
+	5. Hapus Kategori.
+	6. Pagination.
+	
+	
