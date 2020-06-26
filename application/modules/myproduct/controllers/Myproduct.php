@@ -13,7 +13,7 @@ class Myproduct extends MX_Controller {
 	public function index()
 	{
         if($this->session->userdata('username')){
-            
+            $data['jmlKeranjang'] = $this->mdl_product->jmlKeranjang($this->session->userdata('username'))->num_rows();
             // $config['base_url'] = "http://localhost/e-Commerce/OmahOutfit/myproduct/index";
             // $config['total_rows'] = $this->db->count_all('product');
             // $config['per_page'] = 2;
@@ -47,7 +47,7 @@ class Myproduct extends MX_Controller {
             // $data['data'] = $this->mdl_product->get_barangList($config['per_page'], $data['page']);
             // $data['pagination'] = $this->pagination->create_links();
 
-            $this->load->view('myproduct');  
+            $this->load->view('myproduct', $data);  
         }else{
             redirect(base_url('member'));
         } 

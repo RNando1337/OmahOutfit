@@ -12,8 +12,13 @@ class Product extends MX_Controller {
         
 	function index()
 	{	
+			if($this->session->userdata('username')){
+			$panggil['jmlKeranjang'] = $this->mdl_product->jmlKeranjang($this->session->userdata('username'))->num_rows();
 			$panggil['semua_kategori'] = $this->mdl_product->getKategori();
 			$this->load->view('product', $panggil);
+			}else{
+				redirect(base_url('member'));
+			}
 	}
 
 	function tbh(){

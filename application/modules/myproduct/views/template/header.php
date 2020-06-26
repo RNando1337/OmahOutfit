@@ -1,14 +1,3 @@
-<div class="header-content navbar-expand-lg">
-        <div class="container-fluid pt-1">
-            <div class="box float-right pr-3">
-                <a href="#"><i class="far fa-question-circle pr-1"></i>OmahOutfit Care</a>
-            </div>
-
-            <div class="box float-right pr-3">
-                <a href="#">Tentang OmahOutfit</a>
-            </div>
-        </div>
-    </div>
 
     <nav class="navbar navbar-expand-lg pr-4 navColor">
         <div class="container-fluid">
@@ -34,7 +23,13 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item pt-1 pr-3" id="ex3">
-                        <span class="p1 fa-stack" data-count="0">
+                        <span class="p1 fa-stack" data-count="<?php 
+                        if($this->session->userdata('username')){
+                        echo $jmlKeranjang; 
+                        }else{
+                            echo '0';
+                        }
+                        ?>">
                             <a class="nav-link" href="<?= base_url() ?>cart">
                                 <i class="fas fa-shopping-cart navColor"></i>
                             </a>

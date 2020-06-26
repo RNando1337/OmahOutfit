@@ -16,6 +16,7 @@ class Homepage extends MX_Controller {
 		$data['products'] = $this->mdl_product->getAllProductUser();
 		$data['product'] = $this->mdl_product->getAllProduct();
 		if($this->session->userdata('username')){
+			$data['jmlKeranjang'] = $this->mdl_product->jmlKeranjang($this->session->userdata('username'))->num_rows();
 			$this->load->view('homepage', $data);
         }else{
         	$this->load->view('homepage', $data);
@@ -102,7 +103,6 @@ class Homepage extends MX_Controller {
 				redirect("http://localhost/e-Commerce/OmahOutfit/search/index/?keyword=".$kunci."");
 			}
 	}
-
 
 	function logout(){
         $this->session->unset_userdata('username');

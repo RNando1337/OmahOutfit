@@ -107,6 +107,12 @@ class mdl_product extends CI_Model{
     return $output;
   }
 
+  public function jmlKeranjang($username){
+    $this->db->select('count(*) as jml');
+    $this->db->where('username', $username);
+    return $this->db->get('keranjang');
+  }
+
   // SELECT * FROM `product` `p` JOIN `category` `c` ON `c`.`category_id`=`p`.`category_id` WHERE `username` = 'googlel33t' AND productName LIKE '%%' ESCAPE '!' OR productDes LIKE '%%' ESCAPE '!'
 
 }

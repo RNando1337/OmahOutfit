@@ -22,6 +22,11 @@ class mdl_product extends CI_Model{
         }
       }
     
+      public function jmlKeranjang($username){
+        $this->db->select('count(*) as jml');
+        $this->db->where('username', $username);
+        return $this->db->get('keranjang');
+      }
 
     
     

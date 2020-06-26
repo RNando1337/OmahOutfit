@@ -50,6 +50,12 @@ class mdl_product extends CI_Model{
     return $hasil_rupiah;
   }
 
+  public function jmlKeranjang($username){
+    $this->db->select('count(*) as jml');
+    $this->db->where('username', $username);
+    return $this->db->get('keranjang');
+  }
+
   function search($kunci){
     $this->db->like('productName', $kunci);
     $this->db->or_like('productDesk', $kunci);

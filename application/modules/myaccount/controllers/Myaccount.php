@@ -5,6 +5,7 @@ class Myaccount extends MX_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->model('Homepage/mdl_product');
         $this->load->model('mdl_account');
 		$this->load->library(array('form_validation','session'));
 		$this->load->helper('form');
@@ -56,6 +57,7 @@ class Myaccount extends MX_Controller {
                 }
             }
         }
+        $data['jmlKeranjang'] = $this->mdl_product->jmlKeranjang($this->session->userdata('username'))->num_rows();
         $data['pengguna'] = $this->mdl_account->getAccount($username)->result_array();
         $this->load->view('myaccount', $data);
         }else{
