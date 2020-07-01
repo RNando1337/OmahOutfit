@@ -28,7 +28,6 @@ class Dashboard extends MX_Controller
             $config['num_links'] = floor($jmldata);
 
             //Style pagination
-            $config['use_page_numbers'] = TRUE;
             $config['first_link']       = 'First';
             $config['last_link']        = 'Last';
             $config['next_link']        = 'Next';
