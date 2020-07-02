@@ -1,17 +1,4 @@
 
-    <div class="header-content navbar-expand-lg">
-        <div class="container-fluid pt-1">
-            <div class="box float-right pr-3">
-                <a href="#"><i class="far fa-question-circle pr-1"></i>OmahOutfit Care</a>
-            </div>
-
-            <div class="box float-right pr-3">
-                <a href="#">Tentang OmahOutfit</a>
-            </div>
-        </div>
-    </div>
-
-
     <nav class="navbar navbar-expand-lg pr-4 navColor">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img class="head-img" src="<?= base_url() ?>images/LogoNew.png" width="180px" height="45px" /></a>
