@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Mar 2020 pada 11.35
+-- Waktu pembuatan: 12 Jul 2020 pada 13.52
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 5.6.40
 
@@ -38,12 +38,32 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `kategori`) VALUES
-('B0001', 'Baju'),
-('C0001', 'Celana'),
-('G0001', 'Gelang'),
-('H0001', 'Headband'),
-('K0001', 'Kaos Kaki'),
-('S0001', 'Sepatu');
+('KT0001', 'Baju'),
+('KT0002', 'Celana'),
+('KT0003', 'Gelang'),
+('KT0004', 'Headband'),
+('KT0005', 'Kaos Kaki'),
+('KT0006', 'Sepatu');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `keranjang`
+--
+
+CREATE TABLE `keranjang` (
+  `keranjangID` varchar(15) NOT NULL,
+  `productID` varchar(20) NOT NULL,
+  `totalBeli` int(15) NOT NULL,
+  `username` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `keranjang`
+--
+
+INSERT INTO `keranjang` (`keranjangID`, `productID`, `totalBeli`, `username`) VALUES
+('K0001', 'P0001', 3, 'googlel33t');
 
 -- --------------------------------------------------------
 
@@ -58,6 +78,7 @@ CREATE TABLE `member` (
   `username` varchar(32) NOT NULL,
   `password` varchar(255) NOT NULL,
   `telp` varchar(20) NOT NULL,
+  `Alamat` varchar(500) DEFAULT NULL,
   `avatar` varchar(100) NOT NULL DEFAULT 'noavatar.png',
   `aktivasi` enum('0','1') NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -66,8 +87,8 @@ CREATE TABLE `member` (
 -- Dumping data untuk tabel `member`
 --
 
-INSERT INTO `member` (`id`, `name`, `email`, `username`, `password`, `telp`, `avatar`, `aktivasi`) VALUES
-(1, 'Nando Nando', 'nandorejal@gmail.com', 'googlel33t', '02ffdf0008d8aee87251f9d5f08d1ca8', '081225075776', 'noavatar.png', '1');
+INSERT INTO `member` (`id`, `name`, `email`, `username`, `password`, `telp`, `Alamat`, `avatar`, `aktivasi`) VALUES
+(1, 'Nando Nando', 'nandorejal@gmail.com', 'googlel33t', 'b8f8312b939f00abb38eeafd4fd107f3', '081225075776', '', 'noavatar.png', '1');
 
 -- --------------------------------------------------------
 
@@ -82,7 +103,7 @@ CREATE TABLE `product` (
   `productImage` varchar(50) NOT NULL DEFAULT 'nophoto.png',
   `productDesk` varchar(500) NOT NULL,
   `productStok` int(15) NOT NULL,
-  `kategori` varchar(20) NOT NULL,
+  `category_id` varchar(20) NOT NULL,
   `username` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -90,8 +111,10 @@ CREATE TABLE `product` (
 -- Dumping data untuk tabel `product`
 --
 
-INSERT INTO `product` (`productID`, `productName`, `productPrice`, `productImage`, `productDesk`, `productStok`, `kategori`, `username`) VALUES
-('P0001', 'Baju Sekolah', 1000000, 'zytOdW7bI6BAnof200328-googlel33t.png', 'test', 10, 'Baju', 'googlel33t');
+INSERT INTO `product` (`productID`, `productName`, `productPrice`, `productImage`, `productDesk`, `productStok`, `category_id`, `username`) VALUES
+('P0001', 'Baju Sekolah', 1000000, 'zytOdW7bI6BAnof200328-googlel33t.png', 'test', 7, 'KT0001', 'googlel33t'),
+('P0002', 'Celana', 1000000, 'product200508-googlel33t.png', 'asdsad', 123, 'KT0002', 'googlel33t'),
+('P0003', 'asdsad', 1000000, 'product200508-googlel33t.png', 'asdsad', 123123, 'KT0003', 'googlel33t');
 
 -- --------------------------------------------------------
 
@@ -103,6 +126,7 @@ CREATE TABLE `useradmin` (
   `id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
+  `role` varchar(15) NOT NULL,
   `ip_address` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -110,8 +134,9 @@ CREATE TABLE `useradmin` (
 -- Dumping data untuk tabel `useradmin`
 --
 
-INSERT INTO `useradmin` (`id`, `username`, `password`, `ip_address`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '::1');
+INSERT INTO `useradmin` (`id`, `username`, `password`, `role`, `ip_address`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '::1'),
+(2, 'karyawan', '21232f297a57a5a743894a0e4a801fc3', 'karyawan', '::1');
 
 -- --------------------------------------------------------
 
@@ -134,6 +159,12 @@ CREATE TABLE `user_token` (
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indeks untuk tabel `keranjang`
+--
+ALTER TABLE `keranjang`
+  ADD PRIMARY KEY (`keranjangID`);
 
 --
 -- Indeks untuk tabel `member`
@@ -174,7 +205,7 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT untuk tabel `useradmin`
 --
 ALTER TABLE `useradmin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_token`
